@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArcZouk: Dynamics Training Team</title>
+<!-- ============================================================
+     LINK PREVIEW (Step 8 of the brief)
+     Cover image is set. Still to fill: [PAGE-URL] with the live
+     page URL once the domain is live. Test the preview by pasting
+     the URL into a WhatsApp message to yourself before launch.
+     ============================================================ -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ArcZouk: Dynamics Training Team">
+<meta property="og:description" content="Ten Mondays, Oct 5 to Dec 7, 8:00 to 9:30pm at Casa de Cultura, Berkeley. Ten weeks on the thing that makes a Zouk dancer unforgettable.">
+<meta property="og:image" content="https://assets.cdn.filesafe.space/F1wF4j1tcv92g6tyAkiq/media/6aa3504f9a6d26f39f994da6.jpg">
+<meta property="og:url" content="[PAGE-URL]">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ArcZouk: Dynamics Training Team">
+<meta name="twitter:description" content="Ten Mondays, Oct 5 to Dec 7, 8:00 to 9:30pm at Casa de Cultura, Berkeley. Ten weeks on the thing that makes a Zouk dancer unforgettable.">
+<meta name="twitter:image" content="https://assets.cdn.filesafe.space/F1wF4j1tcv92g6tyAkiq/media/6aa3504f9a6d26f39f994da6.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1B2A20;
+    --forest-lift:#25382B;
+    --paper:#E6E8E3;
+    --ink:#141813;
+    --ink-soft:#4A5449;
+    --butter:#E8C766;
+    --rule:rgba(20,24,19,.18);
+    --measure:34rem;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Karla",system-ui,sans-serif;
+    font-size:1.0625rem;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--measure);margin:0 auto;padding:0 1.5rem;}
+
+  /* ---------- signature: the velocity rule ---------- */
+  /* Ticks start evenly spaced (on the beat), then stretch and compress.
+     This is the thing the season teaches, drawn. */
+  .velocity{display:flex;align-items:flex-end;gap:0;height:26px;margin:0;}
+  .velocity span{
+    display:block;width:1.5px;background:currentColor;opacity:.55;
+    transform-origin:bottom;
+  }
+  .velocity span:nth-child(n){margin-right:6px;}
+  .velocity span:nth-child(5){margin-right:14px;}
+  .velocity span:nth-child(6){margin-right:22px;}
+  .velocity span:nth-child(7){margin-right:30px;}
+  .velocity span:nth-child(8){margin-right:16px;}
+  .velocity span:nth-child(9){margin-right:5px;}
+  .velocity span:nth-child(10){margin-right:3px;}
+  .velocity span:nth-child(11){margin-right:2px;}
+  .velocity span:nth-child(12){margin-right:0;}
+  .velocity span:nth-child(odd){height:100%;}
+  .velocity span:nth-child(even){height:56%;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .velocity span{animation:tick .9s cubic-bezier(.2,.7,.2,1) both;}
+    .velocity span:nth-child(1){animation-delay:.05s}
+    .velocity span:nth-child(2){animation-delay:.11s}
+    .velocity span:nth-child(3){animation-delay:.17s}
+    .velocity span:nth-child(4){animation-delay:.23s}
+    .velocity span:nth-child(5){animation-delay:.29s}
+    .velocity span:nth-child(6){animation-delay:.42s}
+    .velocity span:nth-child(7){animation-delay:.62s}
+    .velocity span:nth-child(8){animation-delay:.90s}
+    .velocity span:nth-child(9){animation-delay:.96s}
+    .velocity span:nth-child(10){animation-delay:1.00s}
+    .velocity span:nth-child(11){animation-delay:1.03s}
+    .velocity span:nth-child(12){animation-delay:1.05s}
+  }
+  @keyframes tick{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:.55}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--forest);
+    color:var(--paper);
+    padding:4.5rem 0 3.75rem;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--butter);margin:0 0 1.75rem;
+  }
+  h1{
+    font-family:"Fraunces",Georgia,serif;
+    font-variation-settings:"SOFT" 30,"WONK" 1;
+    font-weight:300;
+    font-size:clamp(2.6rem,10vw,3.9rem);
+    line-height:1.02;
+    letter-spacing:-.022em;
+    margin:0 0 1.4rem;
+  }
+  h1 em{font-style:italic;font-weight:300;color:var(--butter);display:block;}
+  h1 .cat{
+    display:block;
+    font-family:"Fraunces",Georgia,serif;
+    font-variation-settings:"SOFT" 30,"WONK" 1;
+    font-weight:300;font-style:normal;
+    font-size:.38em;line-height:1.1;letter-spacing:-.005em;
+    color:rgba(230,232,227,.78);
+    margin-top:.35em;
+  }
+
+  h1 .kicker{
+    display:block;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.8rem;font-weight:400;
+    letter-spacing:.22em;text-transform:uppercase;
+    color:rgba(230,232,227,.7);
+    margin-bottom:.85rem;
+  }
+  .deck{
+    font-size:1.14rem;line-height:1.5;
+    color:rgba(230,232,227,.82);
+    max-width:26rem;margin:0 0 2.5rem;
+  }
+  .hero .velocity{color:var(--butter);margin-bottom:2.25rem;}
+  .byline{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.78rem;line-height:1.65;letter-spacing:.01em;
+    color:rgba(230,232,227,.62);
+    border-top:1px solid rgba(232,199,102,.28);
+    padding-top:1.1rem;margin:0;
+  }
+
+  /* ---------- body ---------- */
+  main{padding:3.5rem 0 0;}
+  main p{margin:0 0 1.5rem;}
+  .lead{font-size:1.18rem;line-height:1.55;}
+
+  .turn{
+    font-family:"Fraunces",Georgia,serif;
+    font-variation-settings:"SOFT" 30,"WONK" 1;
+    font-weight:500;font-style:italic;
+    font-size:clamp(1.55rem,6vw,2.05rem);
+    line-height:1.18;letter-spacing:-.015em;
+    margin:2.5rem 0 2.5rem;
+  }
+  .beat{
+    font-family:"Fraunces",Georgia,serif;
+    font-variation-settings:"SOFT" 30,"WONK" 1;
+    font-weight:500;
+    font-size:1.5rem;line-height:1.25;
+    margin:2.5rem 0 1.75rem;
+  }
+  .divider{color:var(--ink);opacity:.5;margin:2.75rem 0;}
+
+  .confession{
+    border-left:2px solid var(--butter);
+    padding-left:1.35rem;
+    color:var(--ink-soft);
+    margin:0 0 3rem;
+  }
+  .confession p{margin:0;}
+
+  /* ---------- cta ---------- */
+  .cta-block{
+    background:var(--forest);color:var(--paper);
+    padding:3.25rem 0;margin-top:1rem;
+  }
+  .cta{
+    display:inline-block;
+    background:var(--butter);color:var(--forest);
+    font-family:"Karla",sans-serif;font-weight:700;
+    font-size:1.05rem;letter-spacing:.01em;
+    padding:1rem 2rem;border-radius:2px;
+    text-decoration:none;
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .cta:hover{transform:translateY(-2px);box-shadow:0 8px 0 -4px rgba(232,199,102,.35);}
+  .cta:focus-visible{outline:2px solid var(--paper);outline-offset:4px;}
+  .fine{
+    font-size:.92rem;line-height:1.55;
+    color:rgba(230,232,227,.66);
+    margin:1.5rem 0 0;max-width:28rem;
+  }
+  .fine a{color:var(--butter);}
+
+  /* ---------- details ---------- */
+  .details{padding:3rem 0 4.5rem;}
+  .details dl{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.82rem;line-height:1.5;margin:0;
+    border-top:1px solid var(--rule);
+  }
+  .details .row{
+    display:flex;gap:1.25rem;
+    padding:.85rem 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .details dt{
+    flex:0 0 5.5rem;
+    text-transform:uppercase;letter-spacing:.1em;
+    font-size:.68rem;color:var(--ink-soft);padding-top:.15rem;
+  }
+  .details dd{margin:0;}
+  .ph{background:rgba(232,199,102,.4);padding:0 .3em;border-radius:2px;}
+  .free-note{
+    margin:2.25rem 0 0;font-size:.95rem;color:var(--ink-soft);
+  }
+  .free-note a{color:var(--ink);text-underline-offset:3px;}
+
+  /* ---------- logo ---------- */
+  .logo{display:flex;align-items:center;gap:.7rem;margin:0 0 2.5rem;}
+  .logo svg{width:38px;height:auto;display:block;}
+  .logo .wordmark{
+    font-family:"Fraunces",Georgia,serif;
+    font-variation-settings:"SOFT" 30,"WONK" 1;
+    font-weight:500;font-size:1.02rem;
+    letter-spacing:.09em;text-transform:uppercase;
+    color:var(--paper);
+  }
+
+  /* ---------- media placeholders ---------- */
+  .media{
+    background:rgba(20,24,19,.06);
+    border:1px dashed rgba(20,24,19,.28);
+    border-radius:3px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:1.25rem;gap:.35rem;
+    font-family:"IBM Plex Mono",monospace;
+    color:var(--ink-soft);
+  }
+  .media b{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;}
+  .media span{font-size:.78rem;line-height:1.45;max-width:22rem;}
+  .media.on-dark{
+    background:rgba(230,232,227,.07);
+    border-color:rgba(232,199,102,.4);
+    color:rgba(230,232,227,.72);
+  }
+  .media.cover{aspect-ratio:16/10;margin:0 0 2.75rem;}
+  .media.clip{aspect-ratio:4/5;max-width:20rem;margin:0 0 2.5rem;}
+  .media.vsl{aspect-ratio:16/9;margin:0 0 2.5rem;}
+  .media.room{aspect-ratio:3/2;margin:2.5rem 0 0;}
+  figure{margin:0;}
+  figcaption{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;color:var(--ink-soft);
+    margin-top:.6rem;
+  }
+
+  /* ---------- headshot + hero cta ---------- */
+  .byline-row{display:flex;align-items:center;gap:.9rem;
+    border-top:1px solid rgba(232,199,102,.28);padding-top:1.1rem;}
+  .headshot{
+    flex:0 0 auto;width:52px;height:52px;border-radius:50%;
+    background:rgba(230,232,227,.09);
+    border:1px dashed rgba(232,199,102,.5);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"IBM Plex Mono",monospace;font-size:.52rem;
+    letter-spacing:.06em;text-align:center;line-height:1.25;
+    color:rgba(230,232,227,.6);overflow:hidden;
+  }
+  .hero-actions{margin:2.5rem 0 2.25rem;}
+  .facts-strip{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.76rem;line-height:1.6;letter-spacing:.02em;
+    color:rgba(230,232,227,.68);margin:.9rem 0 0;
+  }
+  .facts-strip .ph{background:rgba(232,199,102,.28);color:var(--paper);}
+
+  /* ---------- order form ---------- */
+  .orderform{
+    background:rgba(230,232,227,.06);
+    border:1px dashed rgba(232,199,102,.45);
+    border-radius:3px;padding:2rem 1.5rem;
+    font-family:"IBM Plex Mono",monospace;
+    color:rgba(230,232,227,.75);
+    text-align:center;
+  }
+  .orderform b{display:block;font-size:.74rem;letter-spacing:.12em;
+    text-transform:uppercase;font-weight:500;margin-bottom:.5rem;color:var(--butter);}
+  .orderform span{font-size:.8rem;line-height:1.5;display:block;max-width:24rem;margin:0 auto;}
+
+  /* ---------- sticky mobile bar ---------- */
+  .stickybar{
+    position:fixed;left:0;right:0;bottom:0;z-index:20;
+    background:var(--forest);
+    border-top:1px solid rgba(232,199,102,.3);
+    padding:.7rem 1rem;
+    display:flex;align-items:center;justify-content:space-between;gap:.9rem;
+  }
+  .stickybar .meta{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;line-height:1.35;
+    color:rgba(230,232,227,.7);
+  }
+  .stickybar .cta{padding:.7rem 1.1rem;font-size:.9rem;}
+  body{padding-bottom:5rem;}
+  /* ---------- faq ---------- */
+  .faq{padding:0 0 4.5rem;}
+  .faq h2{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:500;color:var(--ink-soft);margin:0 0 1.25rem;
+  }
+  .faq details{border-top:1px solid var(--rule);}
+  .faq details:last-of-type{border-bottom:1px solid var(--rule);}
+  .faq summary{
+    cursor:pointer;list-style:none;
+    padding:1rem 2rem 1rem 0;position:relative;
+    font-weight:700;font-size:1rem;line-height:1.4;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{
+    content:"+";position:absolute;right:.25rem;top:.95rem;
+    font-family:"IBM Plex Mono",monospace;font-weight:400;
+    color:var(--ink-soft);font-size:1.15rem;
+  }
+  .faq details[open] summary::after{content:"\2013";}
+  .faq summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+  .faq .answer{padding:0 0 1.15rem;color:var(--ink-soft);font-size:.98rem;}
+  .faq .answer p{margin:0 0 .8rem}
+  .faq .answer p:last-child{margin:0}
+  .faq .answer ul{margin:.2rem 0 .8rem;padding-left:1.1rem}
+  .faq .answer li{margin-bottom:.2rem}
+
+  /* ---------- reserve form ---------- */
+  .form-label{
+    font-family:"IBM Plex Mono",monospace;font-size:.7rem;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--butter);margin:0 0 .8rem;
+  }
+  .passes{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:0 0 1rem;}
+  .pass{position:relative;cursor:pointer;display:block;}
+  .pass input{position:absolute;opacity:0;width:0;height:0;}
+  .pass-body{
+    display:block;padding:1.05rem 1rem;
+    border:1.5px solid rgba(230,232,227,.22);border-radius:3px;
+    transition:border-color .15s ease,background .15s ease;
+  }
+  .pass input:checked + .pass-body{
+    border-color:var(--butter);
+    background:rgba(232,199,102,.09);
+  }
+  .pass input:focus-visible + .pass-body{outline:2px solid var(--paper);outline-offset:2px;}
+  .pass-role{
+    display:block;font-family:"Fraunces",Georgia,serif;
+    font-variation-settings:"SOFT" 30,"WONK" 1;
+    font-weight:500;font-size:1.22rem;line-height:1.1;
+    color:var(--paper);margin-bottom:.3rem;
+  }
+  .pass-price{display:block;font-size:.95rem;color:rgba(230,232,227,.85);}
+  .pass-left{
+    display:block;font-family:"IBM Plex Mono",monospace;
+    font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+    color:rgba(230,232,227,.5);margin-top:.35rem;
+  }
+  .pass-note{
+    font-size:.87rem;line-height:1.5;
+    color:rgba(230,232,227,.6);margin:0 0 1.75rem;
+  }
+  .fields{display:grid;gap:.9rem;margin:0 0 1.5rem;}
+  .field span{
+    display:block;font-family:"IBM Plex Mono",monospace;
+    font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;
+    color:rgba(230,232,227,.6);margin-bottom:.35rem;
+  }
+  .field input{
+    width:100%;font:inherit;font-size:1rem;
+    color:var(--paper);background:rgba(230,232,227,.06);
+    border:1px solid rgba(230,232,227,.22);border-radius:3px;
+    padding:.7rem .8rem;
+  }
+  .field input:focus{outline:none;border-color:var(--butter);background:rgba(230,232,227,.1);}
+  .field input:focus-visible{outline:2px solid var(--butter);outline-offset:1px;}
+  .confirm{
+    display:flex;align-items:flex-start;gap:.65rem;
+    margin:0 0 1.5rem;cursor:pointer;
+    font-size:.92rem;line-height:1.5;color:rgba(230,232,227,.8);
+  }
+  .confirm input{
+    appearance:none;-webkit-appearance:none;
+    width:18px;height:18px;flex:0 0 auto;margin-top:.15rem;
+    border:1.5px solid rgba(230,232,227,.35);border-radius:2px;
+    background:transparent;cursor:pointer;position:relative;
+  }
+  .confirm input:checked{background:var(--butter);border-color:var(--butter);}
+  .confirm input:checked::after{
+    content:"";position:absolute;left:5.5px;top:1.5px;
+    width:4px;height:9px;border:solid var(--forest);
+    border-width:0 2px 2px 0;transform:rotate(42deg);
+  }
+  .confirm input:focus-visible{outline:2px solid var(--paper);outline-offset:2px;}
+  .confirm a{color:var(--butter);text-underline-offset:3px;}
+  button.cta{border:0;cursor:pointer;font:inherit;font-weight:700;font-size:1.05rem;}
+  .secure{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.7rem;line-height:1.5;
+    color:rgba(230,232,227,.5);margin:1rem 0 0;max-width:26rem;
+  }
+  @media(max-width:26rem){.passes{grid-template-columns:1fr;}}
+
+  .pass input[data-soldout="true"] + .pass-body{opacity:.55;}
+  .pass input[data-soldout="true"] + .pass-body .pass-left{color:var(--butter);opacity:.9;}
+
+  @media(min-width:52rem){
+    .stickybar{display:none}
+    body{padding-bottom:0}
+  }
+
+  @media(min-width:52rem){
+    :root{--measure:38rem;}
+    .hero{padding:6.5rem 0 5rem;}
+    main{padding-top:4.5rem;}
+  }
+
+  /* ---- GHL form embed ---- */
+  .embed-wrap{position:relative;margin:1.5rem 0 0;transition:opacity .2s ease}
+  .embed-wrap iframe{width:100%;border:none;border-radius:8px;display:block;background:#fff}
+  .embed-slot[hidden]{display:none}
+  .embed-wrap[data-locked="true"]{opacity:.35;pointer-events:none;filter:saturate(.4)}
+  .lock-note{display:none;font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    line-height:1.6;color:var(--butter);margin:.85rem 0 0;letter-spacing:.02em}
+  .embed-wrap[data-locked="true"] ~ .lock-note{display:block}
+  #steptwo[hidden],#stepone[hidden]{display:none}
+  .step-head{font-size:1rem;margin:0 0 1rem;color:rgba(230,232,227,.86)}
+  .step-back{margin:.9rem 0 0;font-family:"IBM Plex Mono",monospace;font-size:.74rem}
+  .step-back a{color:var(--butter)}
+
+  /* ---- real images ---- */
+  .cover-photo{
+    display:block;width:100%;height:auto;aspect-ratio:16/10;
+    object-fit:cover;border-radius:3px;margin:0 0 2.75rem;
+    background:rgba(230,232,227,.07);
+  }
+  img.headshot{
+    width:52px;height:52px;border-radius:50%;
+    border:1px solid rgba(232,199,102,.45);
+    flex:0 0 auto;display:block;
+    /* contain, not cover: shows the whole photo at its true
+       aspect ratio, so nothing is stretched or cropped. The
+       leftover space inside the circle is filled white. */
+    object-fit:contain;
+    background:#ffffff;
+    /* Vertical position of the photo inside the circle.
+       Lower % moves him DOWN, higher % moves him UP.
+       0% = top, 50% = centre, 100% = bottom. */
+    object-position:center 50%;
+  }
+  .vsl-video{
+    display:block;width:100%;height:auto;aspect-ratio:16/9;
+    object-fit:cover;border-radius:3px;margin:0 0 2.5rem;
+    background:rgba(20,24,19,.06);
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 100 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ArcZouk">
+        <g stroke="#E8C766" stroke-width="3.2" stroke-linecap="round">
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(-90 50 72)"/>
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(-76 50 72)"/>
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(-62 50 72)"/>
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(-48 50 72)"/>
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(-28 50 72)"/>
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(0 50 72)"/>
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(32 50 72)"/>
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(54 50 72)"/>
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(68 50 72)"/>
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(78 50 72)"/>
+          <line x1="50" y1="40" x2="50" y2="26" transform="rotate(86 50 72)"/>
+        </g>
+      </svg>
+      <span class="wordmark">ArcZouk</span>
+    </div>
+
+    <img class="cover-photo" src="https://assets.cdn.filesafe.space/F1wF4j1tcv92g6tyAkiq/media/6aa3504f9a6d26f39f994da6.jpg" alt="ArcZouk Dynamics training team at Casa de Cultura, Berkeley" width="1200" height="750">
+
+    <p class="eyebrow">Season 1</p>
+    <h1><em>Dynamics</em><span class="cat">Training Team</span></h1>
+    <p class="deck">Ten weeks on the thing that makes a Zouk dancer unforgettable.</p>
+
+    <div class="velocity" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="hero-actions">
+      <a class="cta" href="#reserve">Reserve your spot</a>
+      <p class="facts-strip">10x Mondays &middot; Oct 5 &ndash; Dec 7 &middot; 8:00&ndash;9:30pm<br>Casa de Cultura, Berkeley &middot; Early bird $397 &middot; Late bird $497 &middot; 10 lead / 10 follow</p>
+    </div>
+
+    <div class="byline-row">
+      <img class="headshot" src="https://assets.cdn.filesafe.space/F1wF4j1tcv92g6tyAkiq/media/6a0c7648213bb8e4c78d8a34.webp" alt="Imaan Taghavi" width="52" height="52" loading="lazy">
+      <p class="byline" style="border:0;padding:0;margin:0">Taught by Imaan Taghavi, World Vice Champion, and coach to many of the Bay Area's top Zouk dancers.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="lead">Every scene has a few dancers everyone wants a dance with. You've danced with one. Their vocabulary wasn't the biggest, and nothing they did was especially complex. But something happened in those minutes that doesn't happen with anyone else on the floor, and afterward you couldn't quite name what they did.</p>
+
+    <p class="turn">It isn't what they do.<br>It's <em>how</em> they do it.</p>
+
+    <p>Most Zouk teaching hands you more patterns. This hands you more dials on the patterns you already have: velocity, size, friction, breath.</p>
+
+    <figure>
+      <div class="media clip">
+        <b>Clip &middot; looping, muted</b>
+        <span>The same movement danced twice: once with one change, once with many. Vertical, 10&ndash;20 seconds, no sound.</span>
+      </div>
+    </figure>
+
+    <p>Each week we take one fundamental movement and work it three ways, from a single change, to a few, to the version I'd use with my own partners or in a competition round. You choose your level on every exercise. I'd rather you reach.</p>
+
+    <p class="beat">Ten weeks. Twenty dancers, ten of each role.</p>
+
+    <p>An hour and forty five minutes a week, so there's real time to work things until they land. Solo drills between sessions, no partner needed. Not a choreography.</p>
+
+    <figure>
+      <video class="vsl-video" src="https://assets.cdn.filesafe.space/F1wF4j1tcv92g6tyAkiq/media/6aa47a9dcbbb253811935ea7.mp4" autoplay muted loop playsinline controls></video>
+    </figure>
+  </div>
+
+  <section class="cta-block" id="reserve">
+    <div class="wrap">
+      <div class="reserve" id="reserveblock">
+
+        <!-- ============ STEP 1: details ============ -->
+        <form id="stepone" novalidate>
+          <p class="form-label">Choose your role</p>
+          <div class="passes">
+            <label class="pass">
+              <input type="radio" name="pass" value="lead" data-soldout="false" checked>
+              <span class="pass-body">
+                <span class="pass-role">Lead</span>
+                <span class="pass-price">$397 <span style="opacity:.5;text-decoration:line-through">$497</span></span>
+                <span class="pass-left" data-remaining>10 spots left</span>
+              </span>
+            </label>
+            <label class="pass">
+              <input type="radio" name="pass" value="follow" data-soldout="false">
+              <span class="pass-body">
+                <span class="pass-role">Follow</span>
+                <span class="pass-price">$397 <span style="opacity:.5;text-decoration:line-through">$497</span></span>
+                <span class="pass-left" data-remaining>10 spots left</span>
+              </span>
+            </label>
+          </div>
+
+          <p class="pass-note">Passes are capped separately so the room stays balanced. You'll dance your role for most of the class content, and switching at times is welcome.</p>
+
+          <div class="fields">
+            <label class="field"><span>Full name</span>
+              <input type="text" name="name" autocomplete="name" required></label>
+            <label class="field"><span>Email</span>
+              <input type="email" name="email" autocomplete="email" required></label>
+            <label class="field"><span>Mobile</span>
+              <input type="tel" name="phone" autocomplete="tel" required></label>
+          </div>
+
+          <label class="confirm">
+            <input type="checkbox" name="competency" id="competency" required>
+            <span>I've read the <a href="#faq">minimum competency requirements</a> and I'm comfortable with them.</span>
+          </label>
+
+          <button type="submit" class="cta">Continue to payment</button>
+        </form>
+
+        <!-- ============ STEP 2: payment ============ -->
+        <!-- GHL payment forms, one per role. src is held in data-src
+             and only set once step 1 is submitted, so nothing loads
+             until it is needed and the prefill params can be added.
+             Do not change the ids: form_embed.js keys its resize
+             messages off them. -->
+        <div id="steptwo" hidden>
+          <p class="step-head">Almost there. Complete your payment below to confirm your spot.</p>
+          <div class="embed-slot" data-role-slot>
+            <iframe
+              data-src="https://api.ravon.biz/widget/form/HH64E9ZFSDkXPqDShs5t"
+              style="width:100%;height:434px;border:none;border-radius:8px"
+              id="inline-HH64E9ZFSDkXPqDShs5t"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="ArcZouk Dynamics Training Team : Lead"
+              data-height="434"
+              data-layout-iframe-id="inline-HH64E9ZFSDkXPqDShs5t"
+              data-form-id="HH64E9ZFSDkXPqDShs5t"
+              data-cookie-consent="true"
+              data-cookie-consent-provider="auto"
+              title="ArcZouk Dynamics Training Team : Lead"></iframe>
+          </div>
+          <div class="embed-slot" data-role-slot>
+            <iframe
+              data-src="https://api.ravon.biz/widget/form/xPIzf6q0M7movtkmUgfZ"
+              style="width:100%;height:434px;border:none;border-radius:8px"
+              id="inline-xPIzf6q0M7movtkmUgfZ"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="ArcZouk Dynamics Training Team : Follow"
+              data-height="434"
+              data-layout-iframe-id="inline-xPIzf6q0M7movtkmUgfZ"
+              data-form-id="xPIzf6q0M7movtkmUgfZ"
+              data-cookie-consent="true"
+              data-cookie-consent-provider="auto"
+              title="ArcZouk Dynamics Training Team : Follow"></iframe>
+          </div>
+          <p class="step-back"><a href="#" id="changedetails">Change my details</a></p>
+        </div>
+
+        <p class="secure">Card details are handled securely by our payment provider. Straight after paying you'll get a link to the season's group chat, where everything for the ten weeks lives.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="details">
+    <div class="wrap">
+      <dl>
+        <div class="row"><dt>When</dt><dd>Ten Mondays, October 5 to December 7<br>8:00 &ndash; 9:30pm</dd></div>
+        <div class="row"><dt>Where</dt><dd>Casa de Cultura<br>1901 San Pablo Ave, Berkeley</dd></div>
+        <div class="row"><dt>Price</dt><dd>Early bird $397 through September 28, late bird $497 after<br>Paid in full to confirm your place</dd></div>
+        <div class="row"><dt>Questions</dt><dd>Missed weeks and what to expect are answered in the <a href="#faq">FAQ</a></dd></div>
+      </dl>
+    </div>
+  </section>
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+
+      <details>
+        <summary>Am I the right level for this?</summary>
+        <div class="answer">
+          <p>You don't need every variation, but you should be comfortable with most of these:</p>
+          <ul>
+            <li>Basics</li>
+            <li>Lunge</li>
+            <li>Simple turn</li>
+            <li>Bonus</li>
+            <li>Soltinho</li>
+            <li>Bal&atilde;o</li>
+            <li>Frango assado</li>
+            <li>Pi&atilde;o</li>
+            <li>Undulations</li>
+            <li>Chicote</li>
+            <li>Cambr&eacute;</li>
+          </ul>
+          <p>If you're unsure, <a href="[IMAAN WHATSAPP LINK]">message me</a>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What can I expect as a follower?</summary>
+        <div class="answer">
+          <p>To generate as much as you receive. You'll create velocity changes yourself rather than waiting to be moved, manage friction through the connection, and work on what I'd call considerate hijacking: adding to the dance so your lead's reaction is <em>that was cool</em> rather than <em>that isn't where I was going</em>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What can I expect as a lead?</summary>
+        <div class="answer">
+          <p>To accelerate and decelerate with intent, which is where freedom comes from when a song has no beat to hold onto. You'll also work on leaving room for a follower who's doing all of the above, which is harder than it sounds and is most of what makes someone good to dance with.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do I need a partner?</summary>
+        <div class="answer">
+          <p>No. You'll rotate through the room, which is most of the point. You buy either a lead pass or a follow pass, and they're capped separately so the room stays balanced.</p>
+          <p>The expectation is that you can dance your chosen role for most of the class content. Switching roles at times is welcome.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What if I miss a week?</summary>
+        <div class="answer">
+          <p>Come fifteen minutes early and I'll catch you up. Just let me know beforehand each time, rather than turning up and hoping.</p>
+          <p>Miss one or two and you'll be fine. Miss three and you'll still get a lot out of the season. If you already know you'll miss more than three, join the next season instead. Fees aren't prorated for missed weeks.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can I get a refund?</summary>
+        <div class="answer">
+          <p>Refunds are available up until September 30, by WhatsApp message or at imaan@ravon.biz. Up to that same date you can also move your payment to the next season instead.</p>
+          <p>After that, you can hand your spot to someone else at any point, as long as they're the right level and I've approved it.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What if it turns out not to be for me?</summary>
+        <div class="answer">
+          <p>Come on the first Monday. If by the end of that night you feel you're in the wrong room, tell me and I'll refund you in full, no explanation needed.</p>
+          <p>I'd rather you spend the money on something that fits than sit through nine more weeks being polite about it. I'll also tell you myself if I think you'd get more out of a different season.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How is this different from Zero to Zouk?</summary>
+        <div class="answer">
+          <p><a href="[ZERO TO ZOUK LINK]">Zero to Zouk</a> is for people starting from nothing, and it runs at 7:00 on the same Mondays.</p>
+          <p>This one assumes you already have the vocabulary and spends ten weeks on how you use it. They're separate programs, not levels of the same one.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What happens after the ten weeks?</summary>
+        <div class="answer">
+          <p>There's a break, then a new season with a different theme. Each one stands alone, so you can take one, take all of them, or come back when a theme grabs you.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What should I wear and bring?</summary>
+        <div class="answer">
+          <p>Bring a yoga mat. We stretch properly at the start, more than you&rsquo;ll be used to from a normal class.</p>
+          <p>Footwear you’re comfortable dancing in. Socks or barefoot work too.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What if the price is a stretch?</summary>
+        <div class="answer">
+          <p>There are a couple of volunteer spots each season. They come at a significant discount in exchange for helping out on the night, with things like checking people in and capturing content. Message me if you'd like one.</p>
+          <p>And if cost is the only thing standing between you and this, tell me anyway. I'd rather work something out than have you not come.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What if it's sold out?</summary>
+        <div class="answer">
+          <p>There's a waitlist, and spots do open up. Leads and follows are capped separately, so one may still be available when the other isn't.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+</main>
+
+<div class="stickybar">
+  <div class="meta">Oct 5 &ndash; Dec 7<br>10 lead / 10 follow</div>
+  <a class="cta" href="#reserve">Reserve your spot</a>
+</div>
+
+<script>
+/* ============================================================
+   ArcZouk reserve block — ArcZouk Dynamics
+   Paste target: GoHighLevel custom code block.
+
+   FLOW
+   Step 1  Visitor picks a role and fills name, email, mobile.
+           On submit we POST to the RESERVE inbound webhook. The
+           contact is created and tagged program + role +
+           reserve-started. This happens before any payment, so
+           anyone who abandons at the card step is still captured
+           and can be followed up.
+   Step 2  The matching GHL payment form is revealed in place,
+           prefilled from step 1. No page change, no redirect.
+           Its own Form Submitted trigger applies `purchased`,
+           sends the confirmation and redirects to the welcome
+           page.
+
+   The reserve webhook must NOT apply `purchased`. Filling step 1
+   is intent, not payment.
+
+   WAITLIST
+   Flip a role's SOLD_OUT flag to true. Step 1 stays, step 2
+   never appears, and submitting posts to the WAITLIST webhook
+   and redirects to the waitlist page instead.
+   ============================================================ */
+(function(){
+
+  /* ================= EDIT THIS BLOCK ONLY ================= */
+  var CONFIG = {
+
+    /* Flip to true when a role fills. */
+    SOLD_OUT : {
+      lead   : false,
+      follow : false
+    },
+
+    /* Inbound webhook trigger URLs.
+       Automation > Workflows > trigger "Inbound Webhook". */
+    reserveWebhook  : 'https://services.leadconnectorhq.com/hooks/F1wF4j1tcv92g6tyAkiq/webhook-trigger/9f50eade-e453-4218-9391-f53e7e1517c4',
+    waitlistWebhook : 'https://services.leadconnectorhq.com/hooks/F1wF4j1tcv92g6tyAkiq/webhook-trigger/9077b503-07bd-41cf-90de-fe75e4287456',
+
+    waitlistUrl : '/waitlist/dynamics',
+
+    program    : 'ArcZouk Dynamics',
+    programTag : 'arczouk-dynamics-f26',
+    season     : 'F26',
+
+    /* Prefill params appended to the payment iframe. Each name
+       must match a custom field name on the GHL form, or that
+       field arrives blank. Verify before go-live. */
+    param : {
+      name  : 'full_name',
+      email : 'email',
+      phone : 'phone'
+    }
+  };
+  /* ===================== STOP EDITING ===================== */
+
+  var block = document.getElementById('reserveblock');
+  if(!block) return;
+
+  var stepOne  = document.getElementById('stepone');
+  var stepTwo  = document.getElementById('steptwo');
+  var radios   = block.querySelectorAll('input[name="pass"]');
+  var slots    = stepTwo ? stepTwo.querySelectorAll('[data-role-slot]') : [];
+  var checkbox = document.getElementById('competency');
+  var secure   = block.querySelector('.secure');
+  var button   = stepOne ? stepOne.querySelector('button.cta') : null;
+  var backLink = document.getElementById('changedetails');
+
+  var SECURE_COPY = {
+    purchase : secure ? secure.textContent : '',
+    waitlist : "Nothing is charged. Spots open up when someone transfers out, and you'll hear from me before it goes anywhere public."
+  };
+
+  var SLOT = { lead: slots[0], follow: slots[1] };
+
+  function selected(){
+    for(var i=0;i<radios.length;i++){ if(radios[i].checked) return radios[i]; }
+    return radios[0];
+  }
+  function isOut(role){ return CONFIG.SOLD_OUT[role] === true; }
+
+  function update(){
+    var out = isOut(selected().value);
+
+    if(button) button.textContent = out ? 'Join the waitlist' : 'Continue to payment';
+    if(secure) secure.textContent = out ? SECURE_COPY.waitlist : SECURE_COPY.purchase;
+
+    var confirmRow = block.querySelector('.confirm');
+    if(confirmRow){
+      confirmRow.style.display = out ? 'none' : 'flex';
+      if(checkbox) checkbox.required = !out;
+    }
+    block.setAttribute('data-mode', out ? 'waitlist' : 'purchase');
+  }
+
+  Array.prototype.forEach.call(radios, function(r){
+    if(isOut(r.value)){
+      r.setAttribute('data-soldout','true');
+      var left = r.parentNode.querySelector('[data-remaining]');
+      if(left) left.textContent = 'Waitlist only';
+    }
+    r.addEventListener('change', update);
+  });
+
+  function splitName(full){
+    var parts = full.trim().split(/\s+/);
+    return { first: parts.shift() || '', last: parts.join(' ') };
+  }
+
+  function sendToGHL(url, payload){
+    var body = JSON.stringify(payload);
+    if(!url || url.charAt(0) === '['){
+      console.warn('ArcZouk: webhook URL not configured, skipping POST');
+      return Promise.resolve();
+    }
+    var post = fetch(url, {
+      method    : 'POST',
+      headers   : { 'Content-Type': 'application/json' },
+      body      : body,
+      keepalive : true,
+      mode      : 'cors'
+    }).catch(function(err){
+      console.error('ArcZouk: webhook POST failed', err);
+      try { navigator.sendBeacon(url, new Blob([body], {type:'application/json'})); } catch(ignored){}
+    });
+    var timeout = new Promise(function(resolve){ setTimeout(resolve, 2500); });
+    return Promise.race([post, timeout]);
+  }
+
+  /* reveal the matching payment form, prefilled */
+  function revealPayment(role, name, email, phone){
+    var slot = SLOT[role];
+    if(!slot) return;
+
+    var iframe = slot.querySelector('iframe');
+    var base   = iframe.getAttribute('data-src') || iframe.getAttribute('src');
+    var p      = CONFIG.param;
+    var q      = [
+      p.name  + '=' + encodeURIComponent(name),
+      p.email + '=' + encodeURIComponent(email),
+      p.phone + '=' + encodeURIComponent(phone)
+    ].join('&');
+
+    iframe.setAttribute('src', base + (base.indexOf('?') > -1 ? '&' : '?') + q);
+
+    for(var key in SLOT){ if(SLOT[key]) SLOT[key].hidden = key !== role; }
+
+    stepOne.hidden = true;
+    stepTwo.hidden = false;
+    stepTwo.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  if(backLink){
+    backLink.addEventListener('click', function(e){
+      e.preventDefault();
+      stepTwo.hidden = true;
+      stepOne.hidden = false;
+      if(button){ button.disabled = false; }
+      update();
+      stepOne.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  }
+
+  /* ---------------- step 1 submit ---------------- */
+  stepOne.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var role  = selected().value;
+    var out   = isOut(role);
+    var name  = stepOne.querySelector('[name="name"]').value.trim();
+    var email = stepOne.querySelector('[name="email"]').value.trim();
+    var phone = stepOne.querySelector('[name="phone"]').value.trim();
+
+    if(!name || !email || !phone){
+      alert('Please fill in your name, email and mobile.');
+      return;
+    }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+      alert('Please check your email address.');
+      return;
+    }
+
+    var competency = null;
+    if(!out && checkbox){
+      if(!checkbox.checked){
+        alert('Please confirm you have read the minimum competency requirements.');
+        return;
+      }
+      competency = 'yes';
+    }
+
+    if(button){
+      button.disabled = true;
+      button.textContent = 'One moment...';
+    }
+
+    var n = splitName(name);
+    var payload = {
+      firstName : n.first,
+      lastName  : n.last,
+      email     : email,
+      phone     : phone,
+      customData: {
+        role        : role,
+        program     : CONFIG.program,
+        program_tag : CONFIG.programTag,
+        season      : CONFIG.season,
+        mode        : out ? 'waitlist' : 'reserve',
+        source_page : window.location.pathname
+      }
+    };
+    if(competency) payload.customData.competency_confirmed = competency;
+
+    var hook = out ? CONFIG.waitlistWebhook : CONFIG.reserveWebhook;
+
+    sendToGHL(hook, payload).then(function(){
+      if(out){
+        window.location.href = CONFIG.waitlistUrl +
+          '?role=' + encodeURIComponent(role) +
+          '&program=' + encodeURIComponent(CONFIG.program);
+      } else {
+        revealPayment(role, name, email, phone);
+      }
+    });
+  });
+
+  update();
+})();
+</script>
+
+<script src="https://api.ravon.biz/js/form_embed.js"></script>
+</body>
+</html>
