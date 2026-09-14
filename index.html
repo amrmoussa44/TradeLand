@@ -742,7 +742,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Send enquiry</button>
         <p class="form-note">We reply to serious enquiries within one business day.</p>
-        <p class="form-err" id="formErr">Something went wrong. Please try again, or email us directly at info@tradeland-pl.com.</p>
+        <p class="form-err" id="formErr">Something went wrong. Please try again, or email us directly at <a href="mailto:info@tradeland-pl.com">info@tradeland-pl.com</a>.</p>
       </form>
 
       <div class="form-success" id="formSuccess" hidden>
@@ -821,8 +821,11 @@
     });
   });
 
-  // Enquiry form: submits to FormSubmit, which emails info@tradeland-pl.com automatically.
-  // The first submission from the live site triggers a one-time activation email to that address.
+  // Enquiry form: submits to Web3Forms, which emails the address tied to your access key.
+  // SETUP (one time): create a free key at https://web3forms.com using info@tradeland-pl.com
+  // as the destination, then paste it into WEB3FORMS_KEY below. No per-submission activation.
+  // Note: this only works on the hosted site, not in a local file or a preview pane.
+  var WEB3FORMS_KEY = 'f69ac24e-fb2e-4b2d-814d-97d8d2de3930';
   var form = document.getElementById('enquiryForm');
   var formSuccess = document.getElementById('formSuccess');
   var formErr = document.getElementById('formErr');
@@ -834,24 +837,24 @@
     formErr.style.display = 'none';
     var d = new FormData(form);
     var payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: 'New produce enquiry from ' + (d.get('name') || 'the website'),
+      from_name: 'TradeLand website',
       name: d.get('name') || '',
       company: d.get('company') || '',
       email: d.get('email') || '',
       market: d.get('country') || '',
-      product: d.getAll('product').join(', '),
-      message: d.get('message') || '',
-      _subject: 'New produce enquiry from ' + (d.get('name') || 'the website'),
-      _template: 'table',
-      _captcha: 'false'
+      products: d.getAll('product').join(', '),
+      message: d.get('message') || ''
     };
-    fetch('https://formsubmit.co/ajax/info@tradeland-pl.com', {
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(payload)
     })
     .then(function(r){ return r.json(); })
     .then(function(data){
-      if (data && (data.success === true || data.success === 'true')) {
+      if (data && data.success) {
         form.style.display = 'none';
         formSuccess.hidden = false;
         formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
