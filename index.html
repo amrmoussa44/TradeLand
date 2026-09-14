@@ -247,6 +247,11 @@
   }
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--leaf)}
   textarea{resize:vertical;min-height:120px}
+  .field .opt{font-weight:400;color:var(--muted);font-size:.8rem}
+  .checkboxes{display:grid;grid-template-columns:1fr 1fr;gap:9px 16px;margin-top:4px}
+  .chk{display:flex;align-items:center;gap:9px;margin:0;font-weight:400;font-size:.95rem;color:var(--ink);cursor:pointer}
+  .chk input[type="checkbox"]{appearance:auto;-webkit-appearance:auto;width:17px;height:17px;min-width:17px;padding:0;margin:0;border:0;background:none;accent-color:var(--leaf);cursor:pointer}
+  @media (max-width:480px){.checkboxes{grid-template-columns:1fr}}
   form.enquiry .btn{width:100%;margin-top:6px}
   .form-note{font-size:.8rem;color:var(--muted);margin-top:12px;text-align:center}
   .form-err{display:none;font-size:.83rem;color:#b3261e;margin-top:10px;text-align:center}
@@ -714,24 +719,22 @@
           </div>
         </div>
         <div class="field">
-          <label for="product">Product of interest</label>
-          <select id="product" name="product">
-            <option value="">Select a product</option>
-            <option>Apples</option>
-            <option>Blueberries</option>
-            <option>Oranges</option>
-            <option>Mandarins</option>
-            <option>Lemons</option>
-            <option>Pomegranate</option>
-            <option>Mango</option>
-            <option>Strawberries</option>
-            <option>Potatoes</option>
-            <option>Sweet potatoes</option>
-            <option>Onions</option>
-            <option>Green onions</option>
-            <option>Frozen range</option>
-            <option>Multiple products</option>
-          </select>
+          <label>Products of interest <span class="opt">(select all that apply)</span></label>
+          <div class="checkboxes">
+            <label class="chk"><input type="checkbox" name="product" value="Apples"><span>Apples</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Blueberries"><span>Blueberries</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Oranges"><span>Oranges</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Lemons"><span>Lemons</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Mango"><span>Mango</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Pomegranate"><span>Pomegranate</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Strawberries"><span>Strawberries</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Grapes"><span>Grapes</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Sweet Potatoes"><span>Sweet Potatoes</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Potatoes"><span>Potatoes</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Onions"><span>Onions</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Garlic"><span>Garlic</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Other"><span>Other</span></label>
+          </div>
         </div>
         <div class="field">
           <label for="message">Message</label>
@@ -835,7 +838,7 @@
       company: d.get('company') || '',
       email: d.get('email') || '',
       market: d.get('country') || '',
-      product: d.get('product') || '',
+      product: d.getAll('product').join(', '),
       message: d.get('message') || '',
       _subject: 'New produce enquiry from ' + (d.get('name') || 'the website'),
       _template: 'table',
