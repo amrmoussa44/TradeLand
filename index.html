@@ -200,7 +200,7 @@
   .apple-pic img{width:100%;height:100%;object-fit:cover;min-height:420px}
 
   /* ---------- Capabilities ---------- */
-  .caps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
+  .caps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
   .cap{padding:30px 24px;border:1px solid #e9ede6;border-radius:var(--radius);background:#fff}
   .cap .ic{width:46px;height:46px;border-radius:11px;background:var(--paper-2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
   .cap .ic svg{width:24px;height:24px;stroke:var(--leaf-deep)}
@@ -249,6 +249,13 @@
   textarea{resize:vertical;min-height:120px}
   form.enquiry .btn{width:100%;margin-top:6px}
   .form-note{font-size:.8rem;color:var(--muted);margin-top:12px;text-align:center}
+  .form-err{display:none;font-size:.83rem;color:#b3261e;margin-top:10px;text-align:center}
+  .enquiry button[disabled]{opacity:.7;cursor:default}
+  .form-success{background:#fff;border:1px solid #e9ede6;border-radius:var(--radius);padding:46px 30px;box-shadow:var(--card-shadow);text-align:center}
+  .fs-badge{width:66px;height:66px;border-radius:50%;background:#e8f5e0;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+  .fs-badge svg{width:32px;height:32px;stroke:var(--leaf-deep)}
+  .form-success h3{font-size:1.3rem;margin-bottom:8px}
+  .form-success p{font-size:.98rem}
 
   /* ---------- Footer ---------- */
   footer{background:var(--navy-deep);color:#c4d2e0;padding:64px 0 30px}
@@ -340,7 +347,7 @@
     </div>
 
     <div class="hero-strip">
-      <div><div class="n">2</div><div class="k">Sourcing origins</div></div>
+      <div><div class="n">6</div><div class="k">Sourcing origins</div></div>
       <div><div class="n">15+</div><div class="k">Product lines</div></div>
       <div><div class="n">12mo</div><div class="k">Supply through the year</div></div>
       <div><div class="n">Export</div><div class="k">Grade and packing</div></div>
@@ -360,7 +367,7 @@
     <div class="origin-grid">
       <article class="origin">
         <div class="ph">
-          <img src="https://images.unsplash.com/photo-1672155984758-383be9767f5e?fm=jpg&q=80&w=1100&auto=format&fit=crop" alt="Red apples ripening on the branch" loading="lazy">
+          <img src="https://res.cloudinary.com/dzkoeyec0/image/upload/f_auto,q_auto,w_1100/v1789412424/IMG-20260912-WA0008_ydcyrp.jpg" alt="Fresh apples" loading="lazy">
           <span class="flag">Export</span>
         </div>
         <div class="body">
@@ -401,7 +408,7 @@
     <div class="sec-head">
       <span class="lead-line">Our produce</span>
       <h2>What we supply.</h2>
-      <p>A working selection of the lines we move most, grouped by export and import. Packing, sizing and grades are set to your market and retailer specification. Ask us about volumes and current availability.</p>
+      <p>A working selection of the lines we move most, grouped by export and import. Packing, sizing and grades are set to your market and retailer specification. Ask us about volumes and current availability, and if you need a product that is not listed, we can source it for you.</p>
     </div>
 
     <!-- EXPORT -->
@@ -414,7 +421,7 @@
 
       <article class="card">
         <div class="pic">
-          <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh red apples" loading="lazy"></div>
+          <img src="https://res.cloudinary.com/dzkoeyec0/image/upload/f_auto,q_auto,w_800/v1789412424/IMG-20260912-WA0008_ydcyrp.jpg" alt="Fresh apples" loading="lazy"></div>
         <div class="cbody">
           <h4>Apples</h4>
           <p>Crisp, high-color dessert apples across several varieties, graded and stored for condition.</p>
@@ -424,7 +431,7 @@
 
       <article class="card">
         <div class="pic">
-          <img src="https://images.unsplash.com/photo-1745348630313-96f51a33c955?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh blueberries" loading="lazy"></div>
+          <img src="https://res.cloudinary.com/dzkoeyec0/image/upload/f_auto,q_auto,w_800/v1789412422/IMG-20260912-WA0007_urtn9f.jpg" alt="Fresh berries" loading="lazy"></div>
         <div class="cbody">
           <h4>Blueberries</h4>
           <p>Plump, deep-blue berries graded for size and firmness, fresh in season and frozen year round.</p>
@@ -531,7 +538,7 @@
 
       <article class="card">
         <div class="pic">
-          <img src="https://images.unsplash.com/photo-1580201092675-a0a6a6cafbb1?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh garlic bulbs" loading="lazy"></div>
+          <img src="https://res.cloudinary.com/dzkoeyec0/image/upload/f_auto,q_auto,w_800/v1789413136/360_F_257545862_MK4YSramzD8GICDZEQygA0nUQUaSiLvu_djxy8a.jpg" alt="Fresh garlic bulbs" loading="lazy"></div>
         <div class="cbody">
           <h4>Garlic</h4>
           <p>Firm, aromatic garlic bulbs, cleaned and packed for export.</p>
@@ -572,7 +579,7 @@
     <div class="sec-head">
       <span class="lead-line">Why TradeLand</span>
       <h2>Built for buyers who need it to arrive right.</h2>
-      <p>Sourcing produce is easy to promise and hard to deliver. We keep it simple: good growers, careful handling, and a straight line of communication from order to arrival.</p>
+      <p>Sourcing produce is easy to promise and hard to deliver. We keep it simple: good growers, careful handling, and a straight line of communication from order to arrival. And if you need more than what is listed, we build the trading and logistics program around you.</p>
     </div>
     <div class="caps-grid">
       <div class="cap">
@@ -593,7 +600,17 @@
       <div class="cap">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
         <h3>Year-round programs</h3>
-        <p>Seasonal windows across two origins are planned together to keep your supply steady through the calendar.</p>
+        <p>Seasonal windows across our origins are planned together to keep your supply steady through the calendar.</p>
+      </div>
+      <div class="cap">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.9 2.6 15.1 0 18M12 3c-2.6 2.9-2.6 15.1 0 18"/></svg></div>
+        <h3>Global sourcing to order</h3>
+        <p>Need a product that is not listed here? We source across global markets and build the supply to your requirement.</p>
+      </div>
+      <div class="cap">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.7"/><circle cx="17.5" cy="18" r="1.7"/></svg></div>
+        <h3>Transport and logistics</h3>
+        <p>Global freight and cold-chain logistics by sea, air and road, with documentation handled from origin to destination.</p>
       </div>
     </div>
   </div>
@@ -722,7 +739,14 @@
         </div>
         <button type="submit" class="btn btn-primary">Send enquiry</button>
         <p class="form-note">We reply to serious enquiries within one business day.</p>
+        <p class="form-err" id="formErr">Something went wrong. Please try again, or email us directly at info@tradeland-pl.com.</p>
       </form>
+
+      <div class="form-success" id="formSuccess" hidden>
+        <div class="fs-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Thank you, your enquiry is on its way.</h3>
+        <p>We have received your details and will get back to you shortly.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -794,23 +818,48 @@
     });
   });
 
-  // enquiry form: build a pre-filled email (swap in a real endpoint later)
+  // Enquiry form: submits to FormSubmit, which emails info@tradeland-pl.com automatically.
+  // The first submission from the live site triggers a one-time activation email to that address.
   var form = document.getElementById('enquiryForm');
+  var formSuccess = document.getElementById('formSuccess');
+  var formErr = document.getElementById('formErr');
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending...';
+    formErr.style.display = 'none';
     var d = new FormData(form);
-    var body =
-      'Name: ' + (d.get('name')||'') + '\n' +
-      'Company: ' + (d.get('company')||'') + '\n' +
-      'Email: ' + (d.get('email')||'') + '\n' +
-      'Destination market: ' + (d.get('country')||'') + '\n' +
-      'Product: ' + (d.get('product')||'') + '\n\n' +
-      (d.get('message')||'');
-    // REPLACE with the real destination email address
-    var to = 'info@tradeland-pl.com';
-    window.location.href = 'mailto:' + to +
-      '?subject=' + encodeURIComponent('Produce enquiry from ' + (d.get('name')||'website')) +
-      '&body=' + encodeURIComponent(body);
+    var payload = {
+      name: d.get('name') || '',
+      company: d.get('company') || '',
+      email: d.get('email') || '',
+      market: d.get('country') || '',
+      product: d.get('product') || '',
+      message: d.get('message') || '',
+      _subject: 'New produce enquiry from ' + (d.get('name') || 'the website'),
+      _template: 'table',
+      _captcha: 'false'
+    };
+    fetch('https://formsubmit.co/ajax/info@tradeland-pl.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (data && (data.success === true || data.success === 'true')) {
+        form.style.display = 'none';
+        formSuccess.hidden = false;
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        throw new Error('submit failed');
+      }
+    })
+    .catch(function(){
+      btn.disabled = false; btn.textContent = label;
+      formErr.style.display = 'block';
+    });
   });
 </script>
 </body>
