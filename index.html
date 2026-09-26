@@ -11,7 +11,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -33,6 +33,11 @@
     --sans:"Inter",system-ui,sans-serif;
   }
 
+  html[lang="ar"]{
+    --serif:"Cairo","Inter",system-ui,sans-serif;
+    --sans:"Cairo","Inter",system-ui,sans-serif;
+  }
+
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -48,9 +53,11 @@
   a{color:inherit;text-decoration:none}
 
   h1,h2,h3{font-family:var(--serif);font-weight:800;line-height:1.1;color:var(--navy);letter-spacing:-.022em}
+  html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3{letter-spacing:0;line-height:1.25}
   h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
   h3{font-size:1.25rem;line-height:1.2}
   p{color:var(--muted)}
+  html[lang="ar"] p{line-height:1.75}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
   section{padding:clamp(64px,8vw,110px) 0}
 
@@ -59,6 +66,7 @@
     font-weight:600;font-size:.83rem;letter-spacing:.06em;
     color:var(--leaf-deep);text-transform:uppercase;
   }
+  html[lang="ar"] .lead-line{letter-spacing:0;text-transform:none;font-size:.9rem}
   .lead-line::before{content:"";width:22px;height:2px;background:var(--leaf);border-radius:2px}
 
   .btn{
@@ -84,7 +92,7 @@
     backdrop-filter:blur(10px);
     border-bottom:1px solid #e7ebe5;
   }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
   .brand{display:flex;align-items:center;gap:11px}
   .brand svg{width:34px;height:34px;flex:none}
   .brand-logo{height:46px;width:auto;display:block}
@@ -95,12 +103,24 @@
   .nav-links a{font-weight:500;font-size:.97rem;color:var(--ink);position:relative;padding:4px 0}
   .nav-links a:hover{color:var(--navy)}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--leaf);transition:width .2s ease}
+  html[dir="rtl"] .nav-links a::after{left:auto;right:0}
   .nav-links a:hover::after{width:100%}
   .nav-quote{display:none}
   .nav-quote::after{display:none !important}
-  .nav-cta{display:flex;align-items:center;gap:14px}
+  .nav-cta{display:flex;align-items:center;gap:12px}
   .menu-btn{display:none;background:none;border:0;cursor:pointer;padding:8px}
   .menu-btn span{display:block;width:24px;height:2px;background:var(--navy);margin:5px 0;transition:.25s}
+
+  /* Language switcher */
+  .lang-switch{display:inline-flex;align-items:center;background:var(--paper);border-radius:100px;padding:3px;gap:1px}
+  .lang-btn{
+    background:none;border:0;cursor:pointer;
+    font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.05em;
+    color:var(--muted);padding:6px 11px;border-radius:100px;transition:background .15s ease, color .15s ease;
+  }
+  .lang-btn:hover{color:var(--navy)}
+  .lang-btn.active{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(7,27,51,.12)}
+  .lang-btn:focus-visible{outline:2px solid var(--leaf);outline-offset:2px}
 
   /* ---------- Hero ---------- */
   .hero{
@@ -110,7 +130,13 @@
       url("https://images.unsplash.com/photo-1488459716781-31db52582fe9?fm=jpg&q=80&w=1900&auto=format&fit=crop") center/cover no-repeat;
     padding:clamp(72px,11vw,140px) 0 0;
   }
+  html[dir="rtl"] .hero{
+    background:
+      linear-gradient(270deg, rgba(7,27,51,.94) 0%, rgba(7,27,51,.82) 40%, rgba(7,27,51,.5) 100%),
+      url("https://images.unsplash.com/photo-1488459716781-31db52582fe9?fm=jpg&q=80&w=1900&auto=format&fit=crop") center/cover no-repeat;
+  }
   .hero h1{color:#fff;font-size:clamp(2.4rem,5.4vw,4.15rem);max-width:15ch;font-weight:800}
+  html[lang="ar"] .hero h1{max-width:18ch}
   .hero p.sub{color:#d8e2ee;font-size:clamp(1.05rem,1.6vw,1.22rem);max-width:52ch;margin:22px 0 32px}
   .hero .lead-line{color:#9fd07f}
   .hero .lead-line::before{background:#9fd07f}
@@ -140,6 +166,8 @@
     font-weight:700;font-size:.82rem;letter-spacing:.04em;
     padding:7px 14px;border-radius:100px;display:flex;align-items:center;gap:7px;
   }
+  html[dir="rtl"] .origin .flag{left:auto;right:16px}
+  html[lang="ar"] .origin .flag{letter-spacing:0}
   .origin .body{padding:26px 26px 30px}
   .origin h3{font-size:1.5rem;margin-bottom:6px}
   .origin .body>p{font-size:.98rem;margin-bottom:16px}
@@ -166,24 +194,14 @@
     position:absolute;top:12px;left:12px;background:rgba(7,27,51,.82);color:#fff;
     font-size:.74rem;font-weight:600;letter-spacing:.03em;padding:5px 11px;border-radius:100px;backdrop-filter:blur(4px);
   }
+  html[dir="rtl"] .card .origin-chip{left:auto;right:12px}
   .card .cbody{padding:16px 18px 20px;flex:1;display:flex;flex-direction:column}
   .card h4{font-family:var(--serif);font-weight:700;font-size:1.18rem;color:var(--navy);margin-bottom:5px;letter-spacing:-.01em}
+  html[lang="ar"] .card h4{letter-spacing:0}
   .card p{font-size:.9rem;line-height:1.5}
+  html[lang="ar"] .card p{line-height:1.65}
   .card .season{margin-top:auto;padding-top:12px;font-size:.8rem;font-weight:600;color:var(--leaf-deep);display:flex;align-items:center;gap:7px}
   .card .season svg{width:14px;height:14px;flex:none}
-
-  /* placeholder tile (swap in real photo) */
-  .pic.placeholder{display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
-  .pic.placeholder .pl-inner{padding:0 12px}
-  .pic.placeholder .pl-name{font-family:var(--serif);font-size:1.25rem;font-weight:700;letter-spacing:-.01em}
-  .pic.placeholder .pl-note{font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;opacity:.82;margin-top:6px}
-  .pl-potato{background:linear-gradient(135deg,#b98a4f,#8a6231)}
-  .pl-sweet{background:linear-gradient(135deg,#d47a3e,#a8481f)}
-  .pl-onion{background:linear-gradient(135deg,#b3474b,#7c2f45)}
-  .pl-green{background:linear-gradient(135deg,#5aa03a,#356b23)}
-  .pl-frozen{background:linear-gradient(135deg,#4c86b8,#2b5c86)}
-  .pl-grape{background:linear-gradient(135deg,#6f3f98,#3c2260)}
-  .pl-garlic{background:linear-gradient(135deg,#cbb98d,#948154)}
 
   /* ---------- Apples feature ---------- */
   .apples{background:var(--navy-deep);color:#fff}
@@ -195,6 +213,7 @@
   .variety{border-top:1px solid rgba(255,255,255,.14);padding:18px 0;display:grid;grid-template-columns:170px 1fr;gap:18px;align-items:baseline}
   .variety:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
   .variety .vn{font-family:var(--serif);font-weight:700;font-size:1.14rem;color:#fff;letter-spacing:-.01em}
+  html[lang="ar"] .variety .vn{letter-spacing:0}
   .variety .vd{color:#aebfd0;font-size:.94rem}
   .apple-pic{border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.7);align-self:stretch}
   .apple-pic img{width:100%;height:100%;object-fit:cover;min-height:420px}
@@ -236,6 +255,7 @@
   .cinfo .ic{width:40px;height:40px;flex:none;border-radius:10px;background:var(--paper-2);display:flex;align-items:center;justify-content:center}
   .cinfo .ic svg{width:20px;height:20px;stroke:var(--navy)}
   .cinfo .k{font-size:.78rem;color:var(--muted);font-weight:600;letter-spacing:.03em}
+  html[lang="ar"] .cinfo .k{letter-spacing:0}
   .cinfo .v{font-weight:600;color:var(--ink)}
   form.enquiry{background:#fff;border:1px solid #e9ede6;border-radius:var(--radius);padding:30px;box-shadow:var(--card-shadow)}
   .field{margin-bottom:16px}
@@ -270,7 +290,9 @@
   .foot-logo{height:60px;width:auto;background:#fff;padding:11px 15px;border-radius:12px}
   footer .fabout{margin-top:16px;font-size:.94rem;max-width:34ch;color:#93a6ba}
   footer .motto{margin-top:16px;font-family:var(--serif);font-style:italic;color:#9fd07f}
+  html[lang="ar"] footer .motto{font-style:normal}
   footer h4{color:#fff;font-family:var(--sans);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+  html[lang="ar"] footer h4{letter-spacing:0;text-transform:none;font-size:.95rem}
   footer ul{list-style:none}
   footer li{margin-bottom:10px}
   footer li a{color:#a9bacb;font-size:.95rem}
@@ -309,6 +331,8 @@
     .hero-cta .btn{width:100%}
     .hero-strip .n{font-size:1.6rem}
     h2{font-size:1.75rem}
+    .lang-switch{padding:2px}
+    .lang-btn{padding:5px 8px;font-size:.72rem}
   }
 </style>
 </head>
@@ -323,16 +347,21 @@
     </a>
 
     <nav class="nav-links" id="navlinks">
-      <a href="#origins">Range</a>
-      <a href="#produce">Produce</a>
-      <a href="#why">Why us</a>
-      <a href="#process">How we work</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="btn btn-primary nav-quote">Request a quote</a>
+      <a href="#origins" data-i18n="nav.range">Range</a>
+      <a href="#produce" data-i18n="nav.produce">Produce</a>
+      <a href="#why" data-i18n="nav.why">Why us</a>
+      <a href="#process" data-i18n="nav.process">How we work</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+      <a href="#contact" class="btn btn-primary nav-quote" data-i18n="nav.quote">Request a quote</a>
     </nav>
 
     <div class="nav-cta">
-      <a href="#contact" class="btn btn-primary">Request a quote</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+        <button type="button" class="lang-btn" data-lang="pl" aria-label="Polski">PL</button>
+        <button type="button" class="lang-btn" data-lang="ar" aria-label="العربية">AR</button>
+      </div>
+      <a href="#contact" class="btn btn-primary" data-i18n="nav.quote">Request a quote</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -343,19 +372,19 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="wrap">
-    <span class="lead-line">Export and import, year round</span>
-    <h1>Fresh produce, from the field to your market.</h1>
-    <p class="sub">TradeLand sources premium fruit and vegetables from trusted growers, then grades, packs and ships them with the cold chain kept intact. Reliable supply, honest quality, connections you can build on.</p>
+    <span class="lead-line" data-i18n="hero.tag">Export and import, year round</span>
+    <h1 data-i18n="hero.title">Fresh produce, from the field to your market.</h1>
+    <p class="sub" data-i18n="hero.sub">TradeLand sources premium fruit and vegetables from trusted growers, then grades, packs and ships them with the cold chain kept intact. Reliable supply, honest quality, connections you can build on.</p>
     <div class="hero-cta">
-      <a href="#produce" class="btn btn-light">View our produce</a>
-      <a href="#contact" class="btn btn-outline-light">Request a quote</a>
+      <a href="#produce" class="btn btn-light" data-i18n="hero.cta1">View our produce</a>
+      <a href="#contact" class="btn btn-outline-light" data-i18n="hero.cta2">Request a quote</a>
     </div>
 
     <div class="hero-strip">
-      <div><div class="n">6</div><div class="k">Sourcing origins</div></div>
-      <div><div class="n">15+</div><div class="k">Product lines</div></div>
-      <div><div class="n">12mo</div><div class="k">Supply through the year</div></div>
-      <div><div class="n">Export</div><div class="k">Grade and packing</div></div>
+      <div><div class="n">6</div><div class="k" data-i18n="hero.stat1">Sourcing origins</div></div>
+      <div><div class="n">15+</div><div class="k" data-i18n="hero.stat2">Product lines</div></div>
+      <div><div class="n" data-i18n="hero.stat3n">12mo</div><div class="k" data-i18n="hero.stat3">Supply through the year</div></div>
+      <div><div class="n" data-i18n="hero.stat4n">Export</div><div class="k" data-i18n="hero.stat4">Grade and packing</div></div>
     </div>
   </div>
 </section>
@@ -364,23 +393,23 @@
 <section class="origins" id="origins">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lead-line">Export and import</span>
-      <h2>Two programs, one standard of quality.</h2>
-      <p>Our range runs across two programs. The export program covers cool-climate orchard fruit and berries. The import program brings sun-grown citrus, tropical fruit, grapes and field vegetables. Together they keep produce moving to your shelves across the seasons.</p>
+      <span class="lead-line" data-i18n="origins.tag">Export and import</span>
+      <h2 data-i18n="origins.title">Two programs, one standard of quality.</h2>
+      <p data-i18n="origins.sub">Our range runs across two programs. The export program covers cool-climate orchard fruit and berries. The import program brings sun-grown citrus, tropical fruit, grapes and field vegetables. Together they keep produce moving to your shelves across the seasons.</p>
     </div>
 
     <div class="origin-grid">
       <article class="origin">
         <div class="ph">
           <img src="https://res.cloudinary.com/dzkoeyec0/image/upload/f_auto,q_auto,w_1100/v1789412424/IMG-20260912-WA0008_ydcyrp.jpg" alt="Fresh apples" loading="lazy">
-          <span class="flag">Export</span>
+          <span class="flag" data-i18n="origins.export">Export</span>
         </div>
         <div class="body">
-          <h3>Orchard fruit and berries</h3>
-          <p>Cool-climate apples in a range of high-color varieties, plus plump summer blueberries. Fruit is stored and graded to hold condition well beyond harvest.</p>
+          <h3 data-i18n="origins.card1title">Orchard fruit and berries</h3>
+          <p data-i18n="origins.card1body">Cool-climate apples in a range of high-color varieties, plus plump summer blueberries. Fruit is stored and graded to hold condition well beyond harvest.</p>
           <div class="taglist">
-            <span class="tag">Apples</span>
-            <span class="tag">Blueberries</span>
+            <span class="tag" data-i18n="prod.apples">Apples</span>
+            <span class="tag" data-i18n="prod.blueberries">Blueberries</span>
           </div>
         </div>
       </article>
@@ -388,18 +417,18 @@
       <article class="origin">
         <div class="ph">
           <img src="https://images.unsplash.com/photo-1654509480655-327cc2b46f86?fm=jpg&q=80&w=1100&auto=format&fit=crop" alt="Oranges growing on trees under a clear sky" loading="lazy">
-          <span class="flag">Import</span>
+          <span class="flag" data-i18n="origins.import">Import</span>
         </div>
         <div class="body">
-          <h3>Citrus, tropical fruit and vegetables</h3>
-          <p>Sun-grown oranges and lemons, sweet mango, ruby pomegranate, strawberries and grapes, alongside field vegetables and garlic.</p>
+          <h3 data-i18n="origins.card2title">Citrus, tropical fruit and vegetables</h3>
+          <p data-i18n="origins.card2body">Sun-grown oranges and lemons, sweet mango, ruby pomegranate, strawberries and grapes, alongside field vegetables and garlic.</p>
           <div class="taglist">
-            <span class="tag">Citrus</span>
-            <span class="tag">Mango</span>
-            <span class="tag">Pomegranate</span>
-            <span class="tag">Strawberry</span>
-            <span class="tag">Grapes</span>
-            <span class="tag">Vegetables</span>
+            <span class="tag" data-i18n="prod.citrus">Citrus</span>
+            <span class="tag" data-i18n="prod.mango">Mango</span>
+            <span class="tag" data-i18n="prod.pomegranate">Pomegranate</span>
+            <span class="tag" data-i18n="prod.strawberry">Strawberry</span>
+            <span class="tag" data-i18n="prod.grapes">Grapes</span>
+            <span class="tag" data-i18n="prod.vegetables">Vegetables</span>
           </div>
         </div>
       </article>
@@ -411,16 +440,16 @@
 <section id="produce">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lead-line">Our produce</span>
-      <h2>What we supply.</h2>
-      <p>A working selection of the lines we move most, grouped by export and import. Packing, sizing and grades are set to your market and retailer specification. Ask us about volumes and current availability, and if you need a product that is not listed, we can source it for you.</p>
+      <span class="lead-line" data-i18n="produce.tag">Our produce</span>
+      <h2 data-i18n="produce.title">What we supply.</h2>
+      <p data-i18n="produce.sub">A working selection of the lines we move most, grouped by export and import. Packing, sizing and grades are set to your market and retailer specification. Ask us about volumes and current availability, and if you need a product that is not listed, we can source it for you.</p>
     </div>
 
     <!-- EXPORT -->
     <div class="grp-title">
-      <h3>Export</h3>
+      <h3 data-i18n="origins.export">Export</h3>
       <span class="rule"></span>
-      <span class="count">2 lines</span>
+      <span class="count" data-i18n="produce.count2">2 lines</span>
     </div>
     <div class="cards">
 
@@ -428,9 +457,9 @@
         <div class="pic">
           <img src="https://res.cloudinary.com/dzkoeyec0/image/upload/f_auto,q_auto,w_800/v1789412424/IMG-20260912-WA0008_ydcyrp.jpg" alt="Fresh apples" loading="lazy"></div>
         <div class="cbody">
-          <h4>Apples</h4>
-          <p>Crisp, high-color dessert apples across several varieties, graded and stored for condition.</p>
-          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>From September, stored year round</span>
+          <h4 data-i18n="prod.apples">Apples</h4>
+          <p data-i18n="prod.apples.d">Crisp, high-color dessert apples across several varieties, graded and stored for condition.</p>
+          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span data-i18n="prod.apples.s">From September, stored year round</span></span>
         </div>
       </article>
 
@@ -438,9 +467,9 @@
         <div class="pic">
           <img src="https://res.cloudinary.com/dzkoeyec0/image/upload/f_auto,q_auto,w_800/v1789412422/IMG-20260912-WA0007_urtn9f.jpg" alt="Fresh berries" loading="lazy"></div>
         <div class="cbody">
-          <h4>Blueberries</h4>
-          <p>Plump, deep-blue berries graded for size and firmness, fresh in season and frozen year round.</p>
-          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>Summer harvest</span>
+          <h4 data-i18n="prod.blueberries">Blueberries</h4>
+          <p data-i18n="prod.blueberries.d">Plump, deep-blue berries graded for size and firmness, fresh in season and frozen year round.</p>
+          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span data-i18n="prod.blueberries.s">Summer harvest</span></span>
         </div>
       </article>
 
@@ -448,9 +477,9 @@
 
     <!-- IMPORT -->
     <div class="grp-title">
-      <h3>Import</h3>
+      <h3 data-i18n="origins.import">Import</h3>
       <span class="rule"></span>
-      <span class="count">10 lines</span>
+      <span class="count" data-i18n="produce.count10">10 lines</span>
     </div>
     <div class="cards">
 
@@ -458,9 +487,9 @@
         <div class="pic">
           <img src="https://images.unsplash.com/photo-1585939268339-886c9643ee98?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh oranges" loading="lazy"></div>
         <div class="cbody">
-          <h4>Oranges</h4>
-          <p>Sweet, juicy oranges with bright rind and high juice content, suited to retail and processing.</p>
-          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>Winter through spring</span>
+          <h4 data-i18n="prod.oranges">Oranges</h4>
+          <p data-i18n="prod.oranges.d">Sweet, juicy oranges with bright rind and high juice content, suited to retail and processing.</p>
+          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span data-i18n="prod.oranges.s">Winter through spring</span></span>
         </div>
       </article>
 
@@ -468,9 +497,9 @@
         <div class="pic">
           <img src="https://images.unsplash.com/photo-1432457990754-c8b5f21448de?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh lemons" loading="lazy"></div>
         <div class="cbody">
-          <h4>Lemons</h4>
-          <p>Firm, aromatic lemons with a thick, resilient skin that travels and stores well.</p>
-          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>Most of the year</span>
+          <h4 data-i18n="prod.lemons">Lemons</h4>
+          <p data-i18n="prod.lemons.d">Firm, aromatic lemons with a thick, resilient skin that travels and stores well.</p>
+          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span data-i18n="prod.lemons.s">Most of the year</span></span>
         </div>
       </article>
 
@@ -478,9 +507,9 @@
         <div class="pic">
           <img src="https://images.unsplash.com/photo-1519096845289-95806ee03a1a?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh mango" loading="lazy"></div>
         <div class="cbody">
-          <h4>Mango</h4>
-          <p>Fragrant mango, rich and sweet, sized and packed for retail and food service.</p>
-          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>Summer season</span>
+          <h4 data-i18n="prod.mango">Mango</h4>
+          <p data-i18n="prod.mango.d">Fragrant mango, rich and sweet, sized and packed for retail and food service.</p>
+          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span data-i18n="prod.mango.s">Summer season</span></span>
         </div>
       </article>
 
@@ -488,9 +517,9 @@
         <div class="pic">
           <img src="https://images.unsplash.com/photo-1541344999736-83eca272f6fc?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh pomegranates" loading="lazy"></div>
         <div class="cbody">
-          <h4>Pomegranate</h4>
-          <p>Heavy fruit with deep ruby arils, sweet and full of juice, packed for export.</p>
-          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>Autumn season</span>
+          <h4 data-i18n="prod.pomegranate">Pomegranate</h4>
+          <p data-i18n="prod.pomegranate.d">Heavy fruit with deep ruby arils, sweet and full of juice, packed for export.</p>
+          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span data-i18n="prod.pomegranate.s">Autumn season</span></span>
         </div>
       </article>
 
@@ -498,9 +527,9 @@
         <div class="pic">
           <img src="https://images.unsplash.com/photo-1574856344991-aaa31b6f4ce3?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh strawberries" loading="lazy"></div>
         <div class="cbody">
-          <h4>Strawberries</h4>
-          <p>Bright, sweet strawberries, supplied fresh in season and as IQF frozen fruit year round.</p>
-          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>Winter through spring</span>
+          <h4 data-i18n="prod.strawberries">Strawberries</h4>
+          <p data-i18n="prod.strawberries.d">Bright, sweet strawberries, supplied fresh in season and as IQF frozen fruit year round.</p>
+          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span data-i18n="prod.strawberries.s">Winter through spring</span></span>
         </div>
       </article>
 
@@ -508,9 +537,9 @@
         <div class="pic">
           <img src="https://images.unsplash.com/photo-1698703428304-5ea0e245e266?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh grapes" loading="lazy"></div>
         <div class="cbody">
-          <h4>Grapes</h4>
-          <p>Sweet table grapes in full bunches, cooled and packed for export.</p>
-          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>Summer season</span>
+          <h4 data-i18n="prod.grapes">Grapes</h4>
+          <p data-i18n="prod.grapes.d">Sweet table grapes in full bunches, cooled and packed for export.</p>
+          <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span data-i18n="prod.grapes.s">Summer season</span></span>
         </div>
       </article>
 
@@ -518,8 +547,8 @@
         <div class="pic">
           <img src="https://images.unsplash.com/photo-1730815048561-45df6f7f331d?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh sweet potatoes" loading="lazy"></div>
         <div class="cbody">
-          <h4>Sweet Potatoes</h4>
-          <p>Deep-orange, uniform sizing for retail and food service buyers.</p>
+          <h4 data-i18n="prod.sweetpotatoes">Sweet Potatoes</h4>
+          <p data-i18n="prod.sweetpotatoes.d">Deep-orange, uniform sizing for retail and food service buyers.</p>
         </div>
       </article>
 
@@ -527,8 +556,8 @@
         <div class="pic">
           <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh potatoes" loading="lazy"></div>
         <div class="cbody">
-          <h4>Potatoes</h4>
-          <p>Table and processing grades, washed, sized and packed to your specification.</p>
+          <h4 data-i18n="prod.potatoes">Potatoes</h4>
+          <p data-i18n="prod.potatoes.d">Table and processing grades, washed, sized and packed to your specification.</p>
         </div>
       </article>
 
@@ -536,8 +565,8 @@
         <div class="pic">
           <img src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Fresh golden and red onions" loading="lazy"></div>
         <div class="cbody">
-          <h4>Onions</h4>
-          <p>Red and golden onions in bulk and net packs.</p>
+          <h4 data-i18n="prod.onions">Onions</h4>
+          <p data-i18n="prod.onions.d">Red and golden onions in bulk and net packs.</p>
         </div>
       </article>
 
@@ -545,8 +574,8 @@
         <div class="pic">
           <img src="https://res.cloudinary.com/dzkoeyec0/image/upload/f_auto,q_auto,w_800/v1789413136/360_F_257545862_MK4YSramzD8GICDZEQygA0nUQUaSiLvu_djxy8a.jpg" alt="Fresh garlic bulbs" loading="lazy"></div>
         <div class="cbody">
-          <h4>Garlic</h4>
-          <p>Firm, aromatic garlic bulbs, cleaned and packed for export.</p>
+          <h4 data-i18n="prod.garlic">Garlic</h4>
+          <p data-i18n="prod.garlic.d">Firm, aromatic garlic bulbs, cleaned and packed for export.</p>
         </div>
       </article>
 
@@ -558,17 +587,17 @@
 <!-- ============ APPLES FEATURE ============ -->
 <section class="apples">
   <div class="wrap">
-    <span class="lead-line">Apples, in focus</span>
-    <h2>Apple varieties, matched to the calendar.</h2>
+    <span class="lead-line" data-i18n="apples.tag">Apples, in focus</span>
+    <h2 data-i18n="apples.title">Apple varieties, matched to the calendar.</h2>
     <div class="apple-wrap">
       <div class="apple-copy">
-        <p>Our apple program runs across several varieties so we can hold strong color, sweetness and shelf life through the season and into stored supply.</p>
+        <p data-i18n="apples.intro">Our apple program runs across several varieties so we can hold strong color, sweetness and shelf life through the season and into stored supply.</p>
         <div class="varieties">
-          <div class="variety"><div class="vn">Royal Gala</div><div class="vd">Available from September and held for export through the year until the next crop.</div></div>
-          <div class="variety"><div class="vn">Gala</div><div class="vd">Deep color without stripes. In season from September to January.</div></div>
-          <div class="variety"><div class="vn">Idared</div><div class="vd">A firm, strong apple with a long shelf life. From late October.</div></div>
-          <div class="variety"><div class="vn">JonaPrince</div><div class="vd">Full color and high sugar. Comes in from November each year.</div></div>
-          <div class="variety"><div class="vn">Redcap and Gloster</div><div class="vd">Bright, deep-red dessert apples with firm, crisp flesh.</div></div>
+          <div class="variety"><div class="vn" data-i18n="apples.v1n">Royal Gala</div><div class="vd" data-i18n="apples.v1d">Available from September and held for export through the year until the next crop.</div></div>
+          <div class="variety"><div class="vn" data-i18n="apples.v2n">Gala</div><div class="vd" data-i18n="apples.v2d">Deep color without stripes. In season from September to January.</div></div>
+          <div class="variety"><div class="vn" data-i18n="apples.v3n">Idared</div><div class="vd" data-i18n="apples.v3d">A firm, strong apple with a long shelf life. From late October.</div></div>
+          <div class="variety"><div class="vn" data-i18n="apples.v4n">JonaPrince</div><div class="vd" data-i18n="apples.v4d">Full color and high sugar. Comes in from November each year.</div></div>
+          <div class="variety"><div class="vn" data-i18n="apples.v5n">Redcap and Gloster</div><div class="vd" data-i18n="apples.v5d">Bright, deep-red dessert apples with firm, crisp flesh.</div></div>
         </div>
       </div>
       <div class="apple-pic">
@@ -582,40 +611,40 @@
 <section id="why">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lead-line">Why TradeLand</span>
-      <h2>Built for buyers who need it to arrive right.</h2>
-      <p>Sourcing produce is easy to promise and hard to deliver. We keep it simple: good growers, careful handling, and a straight line of communication from order to arrival. And if you need more than what is listed, we build the trading and logistics program around you.</p>
+      <span class="lead-line" data-i18n="why.tag">Why TradeLand</span>
+      <h2 data-i18n="why.title">Built for buyers who need it to arrive right.</h2>
+      <p data-i18n="why.sub">Sourcing produce is easy to promise and hard to deliver. We keep it simple: good growers, careful handling, and a straight line of communication from order to arrival. And if you need more than what is listed, we build the trading and logistics program around you.</p>
     </div>
     <div class="caps-grid">
       <div class="cap">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2 3 6v6c0 5 3.8 8.5 9 10 5.2-1.5 9-5 9-10V6l-9-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Trusted grower network</h3>
-        <p>Direct, long-standing relationships with growers at origin, so we know how the fruit is grown and handled.</p>
+        <h3 data-i18n="why.c1t">Trusted grower network</h3>
+        <p data-i18n="why.c1d">Direct, long-standing relationships with growers at origin, so we know how the fruit is grown and handled.</p>
       </div>
       <div class="cap">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 12h3l2-6 4 12 2-6h5"/></svg></div>
-        <h3>Cold chain kept intact</h3>
-        <p>Temperature is controlled from the packhouse to arrival, so condition and shelf life hold on the journey.</p>
+        <h3 data-i18n="why.c2t">Cold chain kept intact</h3>
+        <p data-i18n="why.c2d">Temperature is controlled from the packhouse to arrival, so condition and shelf life hold on the journey.</p>
       </div>
       <div class="cap">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></div>
-        <h3>Export-grade packing</h3>
-        <p>Sizing, grading and labeling set to your market and retailer specification, from single pallets to full loads.</p>
+        <h3 data-i18n="why.c3t">Export-grade packing</h3>
+        <p data-i18n="why.c3d">Sizing, grading and labeling set to your market and retailer specification, from single pallets to full loads.</p>
       </div>
       <div class="cap">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <h3>Year-round programs</h3>
-        <p>Seasonal windows across our origins are planned together to keep your supply steady through the calendar.</p>
+        <h3 data-i18n="why.c4t">Year-round programs</h3>
+        <p data-i18n="why.c4d">Seasonal windows across our origins are planned together to keep your supply steady through the calendar.</p>
       </div>
       <div class="cap">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.9 2.6 15.1 0 18M12 3c-2.6 2.9-2.6 15.1 0 18"/></svg></div>
-        <h3>Global sourcing to order</h3>
-        <p>Need a product that is not listed here? We source across global markets and build the supply to your requirement.</p>
+        <h3 data-i18n="why.c5t">Global sourcing to order</h3>
+        <p data-i18n="why.c5d">Need a product that is not listed here? We source across global markets and build the supply to your requirement.</p>
       </div>
       <div class="cap">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.7"/><circle cx="17.5" cy="18" r="1.7"/></svg></div>
-        <h3>Transport and logistics</h3>
-        <p>Global freight and cold-chain logistics by sea, air and road, with documentation handled from origin to destination.</p>
+        <h3 data-i18n="why.c6t">Transport and logistics</h3>
+        <p data-i18n="why.c6d">Global freight and cold-chain logistics by sea, air and road, with documentation handled from origin to destination.</p>
       </div>
     </div>
   </div>
@@ -625,29 +654,29 @@
 <section class="process" id="process">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lead-line">How we work</span>
-      <h2>From the field to your door, in four steps.</h2>
+      <span class="lead-line" data-i18n="proc.tag">How we work</span>
+      <h2 data-i18n="proc.title">From the field to your door, in four steps.</h2>
     </div>
     <div class="steps">
       <div class="step">
         <div class="num">1</div>
-        <h3>Source</h3>
-        <p>We select fruit and vegetables from vetted growers at origin, matched to your quality and volume needs.</p>
+        <h3 data-i18n="proc.s1t">Source</h3>
+        <p data-i18n="proc.s1d">We select fruit and vegetables from vetted growers at origin, matched to your quality and volume needs.</p>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <h3>Grade and pack</h3>
-        <p>Produce is graded, sized and packed to your specification, with labeling ready for your market.</p>
+        <h3 data-i18n="proc.s2t">Grade and pack</h3>
+        <p data-i18n="proc.s2d">Produce is graded, sized and packed to your specification, with labeling ready for your market.</p>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <h3>Cold-chain logistics</h3>
-        <p>Cooled and shipped by sea or air, with the cold chain maintained the whole way through.</p>
+        <h3 data-i18n="proc.s3t">Cold-chain logistics</h3>
+        <p data-i18n="proc.s3d">Cooled and shipped by sea or air, with the cold chain maintained the whole way through.</p>
       </div>
       <div class="step">
         <div class="num">4</div>
-        <h3>Delivered</h3>
-        <p>Export documentation is handled and produce arrives at your port or door, ready to move.</p>
+        <h3 data-i18n="proc.s4t">Delivered</h3>
+        <p data-i18n="proc.s4d">Export documentation is handled and produce arrives at your port or door, ready to move.</p>
       </div>
     </div>
   </div>
@@ -656,12 +685,11 @@
 <!-- ============ CTA BAND ============ -->
 <section class="cta-band">
   <div class="wrap">
-    <h2>Let us quote your next order.</h2>
-    <p>Tell us the product, the volume and the market. We will come back with availability, packing options and pricing.</p>
+    <h2 data-i18n="cta.title">Let us quote your next order.</h2>
+    <p data-i18n="cta.sub">Tell us the product, the volume and the market. We will come back with availability, packing options and pricing.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-light">Request a quote</a>
-      <!-- WhatsApp link uses the number in international format, no + or spaces -->
-      <a href="https://wa.me/48790297138" class="btn btn-outline-light" target="_blank" rel="noopener">Message us on WhatsApp</a>
+      <a href="#contact" class="btn btn-light" data-i18n="cta.b1">Request a quote</a>
+      <a href="https://wa.me/48790297138" class="btn btn-outline-light" target="_blank" rel="noopener" data-i18n="cta.b2">Message us on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -670,85 +698,82 @@
 <section id="contact">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lead-line">Get in touch</span>
-      <h2>Start a conversation.</h2>
-      <p>Send us your enquiry and we will reply with what you need to make a decision.</p>
+      <span class="lead-line" data-i18n="contact.tag">Get in touch</span>
+      <h2 data-i18n="contact.title">Start a conversation.</h2>
+      <p data-i18n="contact.sub">Send us your enquiry and we will reply with what you need to make a decision.</p>
     </div>
 
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>Trade Land Sp. z o.o.</h3>
-        <p>From nature to you. Global sourcing, trusted connections.</p>
+        <h3 data-i18n="contact.company">Trade Land Sp. z o.o.</h3>
+        <p data-i18n="contact.motto">From nature to you. Global sourcing, trusted connections.</p>
 
-        <!-- REPLACE the placeholder contact details below with your real ones -->
         <div class="cinfo">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg></div>
-          <div><div class="k">EMAIL</div><div class="v"><a href="mailto:info@tradeland-pl.com">info@tradeland-pl.com</a></div></div>
+          <div><div class="k" data-i18n="contact.email">EMAIL</div><div class="v"><a href="mailto:info@tradeland-pl.com">info@tradeland-pl.com</a></div></div>
         </div>
         <div class="cinfo">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
-          <div><div class="k">PHONE / WHATSAPP</div><div class="v"><a href="tel:+48790297138">+48 790 297 138</a></div></div>
+          <div><div class="k" data-i18n="contact.phone">PHONE / WHATSAPP</div><div class="v"><a href="tel:+48790297138">+48 790 297 138</a></div></div>
         </div>
         <div class="cinfo">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-          <div><div class="k">PROGRAMS</div><div class="v">Export and import</div></div>
+          <div><div class="k" data-i18n="contact.programs">PROGRAMS</div><div class="v" data-i18n="contact.programsv">Export and import</div></div>
         </div>
       </div>
 
-      <!-- This form opens the visitor's email app with the details filled in.
-           To collect submissions automatically, connect it to your form tool or CRM. -->
       <form class="enquiry" id="enquiryForm">
         <div class="row-2">
           <div class="field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
+            <label for="name" data-i18n="form.name">Name</label>
+            <input type="text" id="name" name="name" data-i18n-ph="form.name.ph" placeholder="Your name" required>
           </div>
           <div class="field">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" placeholder="Company name">
+            <label for="company" data-i18n="form.company">Company</label>
+            <input type="text" id="company" name="company" data-i18n-ph="form.company.ph" placeholder="Company name">
           </div>
         </div>
         <div class="row-2">
           <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@company.com" required>
+            <label for="email" data-i18n="form.email">Email</label>
+            <input type="email" id="email" name="email" data-i18n-ph="form.email.ph" placeholder="you@company.com" required>
           </div>
           <div class="field">
-            <label for="country">Destination market</label>
-            <input type="text" id="country" name="country" placeholder="Country or port">
+            <label for="country" data-i18n="form.market">Destination market</label>
+            <input type="text" id="country" name="country" data-i18n-ph="form.market.ph" placeholder="Country or port">
           </div>
         </div>
         <div class="field">
-          <label>Products of interest <span class="opt">(select all that apply)</span></label>
+          <label><span data-i18n="form.products">Products of interest</span> <span class="opt" data-i18n="form.products.opt">(select all that apply)</span></label>
           <div class="checkboxes">
-            <label class="chk"><input type="checkbox" name="product" value="Apples"><span>Apples</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Blueberries"><span>Blueberries</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Oranges"><span>Oranges</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Lemons"><span>Lemons</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Mango"><span>Mango</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Pomegranate"><span>Pomegranate</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Strawberries"><span>Strawberries</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Grapes"><span>Grapes</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Sweet Potatoes"><span>Sweet Potatoes</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Potatoes"><span>Potatoes</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Onions"><span>Onions</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Garlic"><span>Garlic</span></label>
-            <label class="chk"><input type="checkbox" name="product" value="Other"><span>Other</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Apples"><span data-i18n="prod.apples">Apples</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Blueberries"><span data-i18n="prod.blueberries">Blueberries</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Oranges"><span data-i18n="prod.oranges">Oranges</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Lemons"><span data-i18n="prod.lemons">Lemons</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Mango"><span data-i18n="prod.mango">Mango</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Pomegranate"><span data-i18n="prod.pomegranate">Pomegranate</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Strawberries"><span data-i18n="prod.strawberries">Strawberries</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Grapes"><span data-i18n="prod.grapes">Grapes</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Sweet Potatoes"><span data-i18n="prod.sweetpotatoes">Sweet Potatoes</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Potatoes"><span data-i18n="prod.potatoes">Potatoes</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Onions"><span data-i18n="prod.onions">Onions</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Garlic"><span data-i18n="prod.garlic">Garlic</span></label>
+            <label class="chk"><input type="checkbox" name="product" value="Other"><span data-i18n="form.other">Other</span></label>
           </div>
         </div>
         <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Volumes, packing, timing, and anything else we should know."></textarea>
+          <label for="message" data-i18n="form.message">Message</label>
+          <textarea id="message" name="message" data-i18n-ph="form.message.ph" placeholder="Volumes, packing, timing, and anything else we should know."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Send enquiry</button>
-        <p class="form-note">We reply to serious enquiries within one business day.</p>
-        <p class="form-err" id="formErr">Something went wrong. Please try again, or email us directly at <a href="mailto:info@tradeland-pl.com">info@tradeland-pl.com</a>.</p>
+        <button type="submit" class="btn btn-primary" data-i18n="form.send">Send enquiry</button>
+        <p class="form-note" data-i18n="form.note">We reply to serious enquiries within one business day.</p>
+        <p class="form-err" id="formErr"><span data-i18n="form.err">Something went wrong. Please try again, or email us directly at</span> <a href="mailto:info@tradeland-pl.com">info@tradeland-pl.com</a>.</p>
       </form>
 
       <div class="form-success" id="formSuccess" hidden>
         <div class="fs-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h3>Thank you, your enquiry is on its way.</h3>
-        <p>We have received your details and will get back to you shortly.</p>
+        <h3 data-i18n="form.ok.t">Thank you, your enquiry is on its way.</h3>
+        <p data-i18n="form.ok.d">We have received your details and will get back to you shortly.</p>
       </div>
     </div>
   </div>
@@ -763,33 +788,33 @@
           <img src="https://res.cloudinary.com/dzkoeyec0/image/upload/v1789164931/preview_v0jqwg.webp" alt="TradeLand" class="foot-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
           <span class="word" style="display:none"><span class="t">Trade</span><span class="l">Land</span></span>
         </div>
-        <p class="fabout">Premium fruit and vegetables supplied through our export and import programs, graded, packed and shipped worldwide.</p>
-        <p class="motto">From nature to you.</p>
+        <p class="fabout" data-i18n="foot.about">Premium fruit and vegetables supplied through our export and import programs, graded, packed and shipped worldwide.</p>
+        <p class="motto" data-i18n="foot.motto">From nature to you.</p>
       </div>
 
       <div>
-        <h4>Explore</h4>
+        <h4 data-i18n="foot.explore">Explore</h4>
         <ul>
-          <li><a href="#origins">Range</a></li>
-          <li><a href="#produce">Produce</a></li>
-          <li><a href="#why">Why us</a></li>
-          <li><a href="#process">How we work</a></li>
+          <li><a href="#origins" data-i18n="nav.range">Range</a></li>
+          <li><a href="#produce" data-i18n="nav.produce">Produce</a></li>
+          <li><a href="#why" data-i18n="nav.why">Why us</a></li>
+          <li><a href="#process" data-i18n="nav.process">How we work</a></li>
         </ul>
       </div>
 
       <div>
-        <h4>Produce</h4>
+        <h4 data-i18n="nav.produce">Produce</h4>
         <ul>
-          <li><a href="#produce">Export</a></li>
-          <li><a href="#produce">Import</a></li>
-          <li><a href="#produce">Apple varieties</a></li>
+          <li><a href="#produce" data-i18n="origins.export">Export</a></li>
+          <li><a href="#produce" data-i18n="origins.import">Import</a></li>
+          <li><a href="#produce" data-i18n="foot.apples">Apple varieties</a></li>
         </ul>
       </div>
 
       <div>
-        <h4>Contact</h4>
+        <h4 data-i18n="nav.contact">Contact</h4>
         <ul>
-          <li><a href="#contact">Request a quote</a></li>
+          <li><a href="#contact" data-i18n="nav.quote">Request a quote</a></li>
           <li><a href="mailto:info@tradeland-pl.com">info@tradeland-pl.com</a></li>
           <li><a href="https://wa.me/48790297138" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul>
@@ -797,8 +822,8 @@
     </div>
 
     <div class="foot-bottom">
-      <span>&copy; <span id="yr"></span> Trade Land Sp. z o.o. All rights reserved.</span>
-      <span>Global sourcing, trusted connections.</span>
+      <span>&copy; <span id="yr"></span> Trade Land Sp. z o.o. <span data-i18n="foot.rights">All rights reserved.</span></span>
+      <span data-i18n="foot.tagline">Global sourcing, trusted connections.</span>
     </div>
   </div>
 </footer>
@@ -821,6 +846,359 @@
     });
   });
 
+  /* ---------- Translations ---------- */
+  var I18N = {
+    en: {
+      html: { lang:'en', dir:'ltr' },
+      meta: {
+        title:'TradeLand | Fresh Fruit and Vegetable Export and Import',
+        desc:'TradeLand supplies premium fruit and vegetables through its export and import programs, graded, packed and shipped cold-chain to markets worldwide. From nature to you.'
+      },
+      strings: {
+        'nav.range':'Range','nav.produce':'Produce','nav.why':'Why us','nav.process':'How we work','nav.contact':'Contact','nav.quote':'Request a quote',
+        'hero.tag':'Export and import, year round',
+        'hero.title':'Fresh produce, from the field to your market.',
+        'hero.sub':'TradeLand sources premium fruit and vegetables from trusted growers, then grades, packs and ships them with the cold chain kept intact. Reliable supply, honest quality, connections you can build on.',
+        'hero.cta1':'View our produce','hero.cta2':'Request a quote',
+        'hero.stat1':'Sourcing origins','hero.stat2':'Product lines','hero.stat3n':'12mo','hero.stat3':'Supply through the year','hero.stat4n':'Export','hero.stat4':'Grade and packing',
+        'origins.tag':'Export and import',
+        'origins.title':'Two programs, one standard of quality.',
+        'origins.sub':'Our range runs across two programs. The export program covers cool-climate orchard fruit and berries. The import program brings sun-grown citrus, tropical fruit, grapes and field vegetables. Together they keep produce moving to your shelves across the seasons.',
+        'origins.export':'Export','origins.import':'Import',
+        'origins.card1title':'Orchard fruit and berries',
+        'origins.card1body':'Cool-climate apples in a range of high-color varieties, plus plump summer blueberries. Fruit is stored and graded to hold condition well beyond harvest.',
+        'origins.card2title':'Citrus, tropical fruit and vegetables',
+        'origins.card2body':'Sun-grown oranges and lemons, sweet mango, ruby pomegranate, strawberries and grapes, alongside field vegetables and garlic.',
+        'prod.apples':'Apples','prod.blueberries':'Blueberries','prod.oranges':'Oranges','prod.lemons':'Lemons','prod.mango':'Mango','prod.pomegranate':'Pomegranate','prod.strawberry':'Strawberry','prod.strawberries':'Strawberries','prod.grapes':'Grapes','prod.sweetpotatoes':'Sweet Potatoes','prod.potatoes':'Potatoes','prod.onions':'Onions','prod.garlic':'Garlic','prod.citrus':'Citrus','prod.vegetables':'Vegetables',
+        'prod.apples.d':'Crisp, high-color dessert apples across several varieties, graded and stored for condition.',
+        'prod.apples.s':'From September, stored year round',
+        'prod.blueberries.d':'Plump, deep-blue berries graded for size and firmness, fresh in season and frozen year round.',
+        'prod.blueberries.s':'Summer harvest',
+        'prod.oranges.d':'Sweet, juicy oranges with bright rind and high juice content, suited to retail and processing.',
+        'prod.oranges.s':'Winter through spring',
+        'prod.lemons.d':'Firm, aromatic lemons with a thick, resilient skin that travels and stores well.',
+        'prod.lemons.s':'Most of the year',
+        'prod.mango.d':'Fragrant mango, rich and sweet, sized and packed for retail and food service.',
+        'prod.mango.s':'Summer season',
+        'prod.pomegranate.d':'Heavy fruit with deep ruby arils, sweet and full of juice, packed for export.',
+        'prod.pomegranate.s':'Autumn season',
+        'prod.strawberries.d':'Bright, sweet strawberries, supplied fresh in season and as IQF frozen fruit year round.',
+        'prod.strawberries.s':'Winter through spring',
+        'prod.grapes.d':'Sweet table grapes in full bunches, cooled and packed for export.',
+        'prod.grapes.s':'Summer season',
+        'prod.sweetpotatoes.d':'Deep-orange, uniform sizing for retail and food service buyers.',
+        'prod.potatoes.d':'Table and processing grades, washed, sized and packed to your specification.',
+        'prod.onions.d':'Red and golden onions in bulk and net packs.',
+        'prod.garlic.d':'Firm, aromatic garlic bulbs, cleaned and packed for export.',
+        'produce.tag':'Our produce',
+        'produce.title':'What we supply.',
+        'produce.sub':'A working selection of the lines we move most, grouped by export and import. Packing, sizing and grades are set to your market and retailer specification. Ask us about volumes and current availability, and if you need a product that is not listed, we can source it for you.',
+        'produce.count2':'2 lines','produce.count10':'10 lines',
+        'apples.tag':'Apples, in focus',
+        'apples.title':'Apple varieties, matched to the calendar.',
+        'apples.intro':'Our apple program runs across several varieties so we can hold strong color, sweetness and shelf life through the season and into stored supply.',
+        'apples.v1n':'Royal Gala','apples.v1d':'Available from September and held for export through the year until the next crop.',
+        'apples.v2n':'Gala','apples.v2d':'Deep color without stripes. In season from September to January.',
+        'apples.v3n':'Idared','apples.v3d':'A firm, strong apple with a long shelf life. From late October.',
+        'apples.v4n':'JonaPrince','apples.v4d':'Full color and high sugar. Comes in from November each year.',
+        'apples.v5n':'Redcap and Gloster','apples.v5d':'Bright, deep-red dessert apples with firm, crisp flesh.',
+        'why.tag':'Why TradeLand',
+        'why.title':'Built for buyers who need it to arrive right.',
+        'why.sub':'Sourcing produce is easy to promise and hard to deliver. We keep it simple: good growers, careful handling, and a straight line of communication from order to arrival. And if you need more than what is listed, we build the trading and logistics program around you.',
+        'why.c1t':'Trusted grower network','why.c1d':'Direct, long-standing relationships with growers at origin, so we know how the fruit is grown and handled.',
+        'why.c2t':'Cold chain kept intact','why.c2d':'Temperature is controlled from the packhouse to arrival, so condition and shelf life hold on the journey.',
+        'why.c3t':'Export-grade packing','why.c3d':'Sizing, grading and labeling set to your market and retailer specification, from single pallets to full loads.',
+        'why.c4t':'Year-round programs','why.c4d':'Seasonal windows across our origins are planned together to keep your supply steady through the calendar.',
+        'why.c5t':'Global sourcing to order','why.c5d':'Need a product that is not listed here? We source across global markets and build the supply to your requirement.',
+        'why.c6t':'Transport and logistics','why.c6d':'Global freight and cold-chain logistics by sea, air and road, with documentation handled from origin to destination.',
+        'proc.tag':'How we work',
+        'proc.title':'From the field to your door, in four steps.',
+        'proc.s1t':'Source','proc.s1d':'We select fruit and vegetables from vetted growers at origin, matched to your quality and volume needs.',
+        'proc.s2t':'Grade and pack','proc.s2d':'Produce is graded, sized and packed to your specification, with labeling ready for your market.',
+        'proc.s3t':'Cold-chain logistics','proc.s3d':'Cooled and shipped by sea or air, with the cold chain maintained the whole way through.',
+        'proc.s4t':'Delivered','proc.s4d':'Export documentation is handled and produce arrives at your port or door, ready to move.',
+        'cta.title':'Let us quote your next order.',
+        'cta.sub':'Tell us the product, the volume and the market. We will come back with availability, packing options and pricing.',
+        'cta.b1':'Request a quote','cta.b2':'Message us on WhatsApp',
+        'contact.tag':'Get in touch','contact.title':'Start a conversation.',
+        'contact.sub':'Send us your enquiry and we will reply with what you need to make a decision.',
+        'contact.company':'Trade Land Sp. z o.o.',
+        'contact.motto':'From nature to you. Global sourcing, trusted connections.',
+        'contact.email':'EMAIL','contact.phone':'PHONE / WHATSAPP','contact.programs':'PROGRAMS','contact.programsv':'Export and import',
+        'form.name':'Name','form.name.ph':'Your name',
+        'form.company':'Company','form.company.ph':'Company name',
+        'form.email':'Email','form.email.ph':'you@company.com',
+        'form.market':'Destination market','form.market.ph':'Country or port',
+        'form.products':'Products of interest','form.products.opt':'(select all that apply)',
+        'form.other':'Other',
+        'form.message':'Message','form.message.ph':'Volumes, packing, timing, and anything else we should know.',
+        'form.send':'Send enquiry',
+        'form.note':'We reply to serious enquiries within one business day.',
+        'form.err':'Something went wrong. Please try again, or email us directly at',
+        'form.ok.t':'Thank you, your enquiry is on its way.',
+        'form.ok.d':'We have received your details and will get back to you shortly.',
+        'foot.about':'Premium fruit and vegetables supplied through our export and import programs, graded, packed and shipped worldwide.',
+        'foot.motto':'From nature to you.',
+        'foot.explore':'Explore','foot.apples':'Apple varieties',
+        'foot.rights':'All rights reserved.','foot.tagline':'Global sourcing, trusted connections.',
+        'form.subject':'New produce enquiry from ','form.fromname':'TradeLand website'
+      }
+    },
+
+    pl: {
+      html: { lang:'pl', dir:'ltr' },
+      meta: {
+        title:'TradeLand | Eksport i import świeżych owoców i warzyw',
+        desc:'TradeLand dostarcza wysokiej jakości owoce i warzywa w ramach programów eksportu i importu, klasyfikowane, pakowane i wysyłane w łańcuchu chłodniczym na rynki całego świata. Z natury do Ciebie.'
+      },
+      strings: {
+        'nav.range':'Asortyment','nav.produce':'Produkty','nav.why':'Dlaczego my','nav.process':'Jak pracujemy','nav.contact':'Kontakt','nav.quote':'Zapytaj o wycenę',
+        'hero.tag':'Eksport i import, przez cały rok',
+        'hero.title':'Świeże produkty, z pola na Twój rynek.',
+        'hero.sub':'TradeLand pozyskuje wysokiej jakości owoce i warzywa od zaufanych producentów, następnie klasyfikuje, pakuje i wysyła z zachowaniem pełnego łańcucha chłodniczego. Niezawodne dostawy, uczciwa jakość, relacje na długie lata.',
+        'hero.cta1':'Zobacz nasze produkty','hero.cta2':'Zapytaj o wycenę',
+        'hero.stat1':'Źródła dostaw','hero.stat2':'Linie produktowe','hero.stat3n':'12 mies.','hero.stat3':'Dostawy przez cały rok','hero.stat4n':'Eksport','hero.stat4':'Klasyfikacja i pakowanie',
+        'origins.tag':'Eksport i import',
+        'origins.title':'Dwa programy, jeden standard jakości.',
+        'origins.sub':'Nasza oferta obejmuje dwa programy. Program eksportowy to owoce sadowe i jagodowe z klimatu umiarkowanego. Program importowy obejmuje cytrusy z ciepłych krajów, owoce tropikalne, winogrona i warzywa. Razem zapewniają ciągłość dostaw na Twoje półki przez cały sezon.',
+        'origins.export':'Eksport','origins.import':'Import',
+        'origins.card1title':'Owoce sadowe i jagodowe',
+        'origins.card1body':'Jabłka z klimatu umiarkowanego w wielu odmianach o intensywnym wybarwieniu, oraz jędrne letnie borówki. Owoce są przechowywane i klasyfikowane tak, aby zachowały świeżość długo po zbiorach.',
+        'origins.card2title':'Cytrusy, owoce tropikalne i warzywa',
+        'origins.card2body':'Pomarańcze i cytryny z ciepłych krajów, słodkie mango, rubinowy granat, truskawki i winogrona, a także warzywa polowe i czosnek.',
+        'prod.apples':'Jabłka','prod.blueberries':'Borówki','prod.oranges':'Pomarańcze','prod.lemons':'Cytryny','prod.mango':'Mango','prod.pomegranate':'Granat','prod.strawberry':'Truskawka','prod.strawberries':'Truskawki','prod.grapes':'Winogrona','prod.sweetpotatoes':'Bataty','prod.potatoes':'Ziemniaki','prod.onions':'Cebula','prod.garlic':'Czosnek','prod.citrus':'Cytrusy','prod.vegetables':'Warzywa',
+        'prod.apples.d':'Chrupiące, intensywnie wybarwione jabłka deserowe w wielu odmianach, klasyfikowane i przechowywane z zachowaniem jakości.',
+        'prod.apples.s':'Od września, przechowywane przez cały rok',
+        'prod.blueberries.d':'Jędrne borówki o głębokim niebieskim kolorze, klasyfikowane pod kątem wielkości i twardości, świeże w sezonie i mrożone przez cały rok.',
+        'prod.blueberries.s':'Zbiory letnie',
+        'prod.oranges.d':'Słodkie, soczyste pomarańcze o intensywnej skórce i wysokiej zawartości soku, odpowiednie do handlu detalicznego i przetwórstwa.',
+        'prod.oranges.s':'Od zimy do wiosny',
+        'prod.lemons.d':'Jędrne, aromatyczne cytryny z grubą, wytrzymałą skórką, dobrze znoszące transport i przechowywanie.',
+        'prod.lemons.s':'Przez większą część roku',
+        'prod.mango.d':'Aromatyczne mango, bogate w smak i słodkie, kalibrowane i pakowane do handlu i gastronomii.',
+        'prod.mango.s':'Sezon letni',
+        'prod.pomegranate.d':'Ciężkie owoce z głęboko rubinowymi pestkami, słodkie i pełne soku, pakowane na eksport.',
+        'prod.pomegranate.s':'Sezon jesienny',
+        'prod.strawberries.d':'Jasne, słodkie truskawki, dostarczane świeże w sezonie i jako mrożonki IQF przez cały rok.',
+        'prod.strawberries.s':'Od zimy do wiosny',
+        'prod.grapes.d':'Słodkie winogrona stołowe w pełnych kiściach, chłodzone i pakowane na eksport.',
+        'prod.grapes.s':'Sezon letni',
+        'prod.sweetpotatoes.d':'Głęboko pomarańczowe, o równym kalibrze, dla handlu detalicznego i gastronomii.',
+        'prod.potatoes.d':'Klasy stołowe i przetwórcze, myte, kalibrowane i pakowane zgodnie z Twoją specyfikacją.',
+        'prod.onions.d':'Cebula czerwona i złota luzem oraz w opakowaniach siatkowych.',
+        'prod.garlic.d':'Jędrne, aromatyczne główki czosnku, czyszczone i pakowane na eksport.',
+        'produce.tag':'Nasze produkty',
+        'produce.title':'Co dostarczamy.',
+        'produce.sub':'Wybór linii, które obsługujemy najczęściej, podzielony na eksport i import. Pakowanie, kalibraż i klasy dostosowujemy do Twojego rynku i wymagań sieci handlowej. Zapytaj nas o ilości i bieżącą dostępność, a jeśli potrzebujesz produktu spoza listy, sprowadzimy go dla Ciebie.',
+        'produce.count2':'2 linie','produce.count10':'10 linii',
+        'apples.tag':'Jabłka, w centrum uwagi',
+        'apples.title':'Odmiany jabłek dopasowane do kalendarza.',
+        'apples.intro':'Nasz program jabłkowy obejmuje kilka odmian, dzięki czemu utrzymujemy intensywny kolor, słodycz i trwałość przez cały sezon i w okresie przechowywania.',
+        'apples.v1n':'Royal Gala','apples.v1d':'Dostępne od września i przechowywane na eksport przez cały rok, do następnych zbiorów.',
+        'apples.v2n':'Gala','apples.v2d':'Głęboki kolor bez pasków. W sezonie od września do stycznia.',
+        'apples.v3n':'Idared','apples.v3d':'Jędrne, mocne jabłko o długim okresie trwałości. Od końca października.',
+        'apples.v4n':'JonaPrince','apples.v4d':'Pełne wybarwienie i wysoka zawartość cukru. Dostępne od listopada każdego roku.',
+        'apples.v5n':'Redcap i Gloster','apples.v5d':'Jasne, głęboko czerwone jabłka deserowe o jędrnym, chrupiącym miąższu.',
+        'why.tag':'Dlaczego TradeLand',
+        'why.title':'Stworzeni dla kupujących, którzy oczekują, że dostawa dotrze w porządku.',
+        'why.sub':'Pozyskiwanie produktów łatwo obiecać, trudno dowieźć. Robimy to prosto: dobrzy producenci, staranne obchodzenie się z owocami i bezpośrednia komunikacja od zamówienia po dostawę. A jeśli potrzebujesz więcej niż to, co widzisz na liście, zbudujemy program handlowy i logistyczny wokół Ciebie.',
+        'why.c1t':'Zaufana sieć producentów','why.c1d':'Bezpośrednie, wieloletnie relacje z producentami u źródła, dzięki czemu wiemy, jak owoce są uprawiane i przetwarzane.',
+        'why.c2t':'Zachowany łańcuch chłodniczy','why.c2d':'Temperatura jest kontrolowana od pakowni po dostawę, dzięki czemu jakość i trwałość utrzymują się przez całą drogę.',
+        'why.c3t':'Pakowanie klasy eksportowej','why.c3d':'Kalibraż, klasyfikacja i etykietowanie zgodnie z wymaganiami Twojego rynku i sieci handlowej, od pojedynczych palet po pełne załadunki.',
+        'why.c4t':'Programy całoroczne','why.c4d':'Sezony z różnych źródeł planujemy razem, aby zapewnić stałe dostawy przez cały kalendarz.',
+        'why.c5t':'Globalne pozyskiwanie na zamówienie','why.c5d':'Potrzebujesz produktu, którego nie ma na liście? Pozyskujemy z rynków całego świata i budujemy dostawy według Twoich wymagań.',
+        'why.c6t':'Transport i logistyka','why.c6d':'Międzynarodowa spedycja i logistyka chłodnicza drogą morską, lotniczą i lądową, z pełną obsługą dokumentacji od źródła do miejsca przeznaczenia.',
+        'proc.tag':'Jak pracujemy',
+        'proc.title':'Z pola do Twoich drzwi w czterech krokach.',
+        'proc.s1t':'Pozyskiwanie','proc.s1d':'Wybieramy owoce i warzywa od sprawdzonych producentów u źródła, dopasowane do Twoich wymagań jakościowych i ilościowych.',
+        'proc.s2t':'Klasyfikacja i pakowanie','proc.s2d':'Produkty są klasyfikowane, kalibrowane i pakowane zgodnie z Twoją specyfikacją, z etykietami gotowymi na Twój rynek.',
+        'proc.s3t':'Logistyka chłodnicza','proc.s3d':'Chłodzone i wysyłane drogą morską lub lotniczą, z zachowaniem łańcucha chłodniczego przez całą drogę.',
+        'proc.s4t':'Dostarczone','proc.s4d':'Dokumentacja eksportowa jest obsługiwana, a produkty docierają do Twojego portu lub drzwi, gotowe do dalszej dystrybucji.',
+        'cta.title':'Wyceńmy Twoje kolejne zamówienie.',
+        'cta.sub':'Powiedz nam, jaki produkt, jaka ilość i jaki rynek. Wrócimy do Ciebie z dostępnością, opcjami pakowania i wyceną.',
+        'cta.b1':'Zapytaj o wycenę','cta.b2':'Napisz do nas na WhatsApp',
+        'contact.tag':'Skontaktuj się','contact.title':'Zacznijmy rozmowę.',
+        'contact.sub':'Wyślij nam zapytanie, a odpowiemy z informacjami, których potrzebujesz, aby podjąć decyzję.',
+        'contact.company':'Trade Land Sp. z o.o.',
+        'contact.motto':'Z natury do Ciebie. Globalne źródła, zaufane relacje.',
+        'contact.email':'EMAIL','contact.phone':'TELEFON / WHATSAPP','contact.programs':'PROGRAMY','contact.programsv':'Eksport i import',
+        'form.name':'Imię i nazwisko','form.name.ph':'Twoje imię i nazwisko',
+        'form.company':'Firma','form.company.ph':'Nazwa firmy',
+        'form.email':'Email','form.email.ph':'ty@firma.com',
+        'form.market':'Rynek docelowy','form.market.ph':'Kraj lub port',
+        'form.products':'Interesujące produkty','form.products.opt':'(wybierz wszystkie odpowiednie)',
+        'form.other':'Inne',
+        'form.message':'Wiadomość','form.message.ph':'Ilości, sposób pakowania, terminy i wszystko, co powinniśmy wiedzieć.',
+        'form.send':'Wyślij zapytanie',
+        'form.note':'Odpowiadamy na poważne zapytania w ciągu jednego dnia roboczego.',
+        'form.err':'Coś poszło nie tak. Spróbuj ponownie lub napisz bezpośrednio na',
+        'form.ok.t':'Dziękujemy, Twoje zapytanie zostało wysłane.',
+        'form.ok.d':'Otrzymaliśmy Twoje dane i wkrótce się z Tobą skontaktujemy.',
+        'foot.about':'Wysokiej jakości owoce i warzywa dostarczane w ramach naszych programów eksportu i importu, klasyfikowane, pakowane i wysyłane na cały świat.',
+        'foot.motto':'Z natury do Ciebie.',
+        'foot.explore':'Odkryj','foot.apples':'Odmiany jabłek',
+        'foot.rights':'Wszelkie prawa zastrzeżone.','foot.tagline':'Globalne źródła, zaufane relacje.',
+        'form.subject':'Nowe zapytanie produktowe od ','form.fromname':'Strona TradeLand'
+      }
+    },
+
+    ar: {
+      html: { lang:'ar', dir:'rtl' },
+      meta: {
+        title:'TradeLand | تصدير واستيراد الفواكه والخضروات الطازجة',
+        desc:'توفر TradeLand فواكه وخضروات مميزة من خلال برامج التصدير والاستيراد، مصنفة ومعبأة ومشحونة بسلسلة تبريد كاملة إلى الأسواق حول العالم. من الطبيعة إليك.'
+      },
+      strings: {
+        'nav.range':'المجموعة','nav.produce':'المنتجات','nav.why':'لماذا نحن','nav.process':'كيف نعمل','nav.contact':'تواصل معنا','nav.quote':'اطلب عرض سعر',
+        'hero.tag':'تصدير واستيراد على مدار العام',
+        'hero.title':'منتجات طازجة، من الحقل إلى سوقك.',
+        'hero.sub':'تحصل TradeLand على فواكه وخضروات مميزة من مزارعين موثوقين، ثم تصنّفها وتعبّئها وتشحنها مع الحفاظ على سلسلة التبريد كاملة. توريد موثوق وجودة صادقة وعلاقات يمكنك البناء عليها.',
+        'hero.cta1':'اطلع على منتجاتنا','hero.cta2':'اطلب عرض سعر',
+        'hero.stat1':'مصادر التوريد','hero.stat2':'خطوط المنتجات','hero.stat3n':'12 شهر','hero.stat3':'توريد على مدار العام','hero.stat4n':'تصدير','hero.stat4':'تصنيف وتعبئة',
+        'origins.tag':'التصدير والاستيراد',
+        'origins.title':'برنامجان بمعيار جودة واحد.',
+        'origins.sub':'تنقسم مجموعتنا إلى برنامجين. يغطي برنامج التصدير فواكه البساتين والتوت من المناخات المعتدلة. ويقدم برنامج الاستيراد الحمضيات المشمسة والفواكه الاستوائية والعنب والخضروات الحقلية. معًا يضمنان استمرار وصول المنتجات إلى رفوفك خلال كل الفصول.',
+        'origins.export':'تصدير','origins.import':'استيراد',
+        'origins.card1title':'فواكه البساتين والتوت',
+        'origins.card1body':'تفاح من المناخات المعتدلة بأصناف متعددة عالية اللون، إلى جانب التوت الأزرق الصيفي الممتلئ. تُخزَّن الفاكهة وتُصنَّف للحفاظ على جودتها لفترة طويلة بعد الحصاد.',
+        'origins.card2title':'حمضيات وفواكه استوائية وخضروات',
+        'origins.card2body':'برتقال وليمون من المناطق المشمسة، ومانجو حلو، ورمان ياقوتي، وفراولة وعنب، إلى جانب الخضروات الحقلية والثوم.',
+        'prod.apples':'تفاح','prod.blueberries':'توت أزرق','prod.oranges':'برتقال','prod.lemons':'ليمون','prod.mango':'مانجو','prod.pomegranate':'رمان','prod.strawberry':'فراولة','prod.strawberries':'فراولة','prod.grapes':'عنب','prod.sweetpotatoes':'بطاطا حلوة','prod.potatoes':'بطاطس','prod.onions':'بصل','prod.garlic':'ثوم','prod.citrus':'حمضيات','prod.vegetables':'خضروات',
+        'prod.apples.d':'تفاح حلو مقرمش عالي اللون بأصناف متعددة، مصنّف ومخزّن للحفاظ على جودته.',
+        'prod.apples.s':'من سبتمبر، متوفر مخزنًا على مدار العام',
+        'prod.blueberries.d':'حبات ممتلئة ذات لون أزرق داكن، مصنّفة حسب الحجم والصلابة، طازجة في موسمها ومجمدة على مدار العام.',
+        'prod.blueberries.s':'حصاد صيفي',
+        'prod.oranges.d':'برتقال حلو وعصيري بقشرة زاهية ومحتوى عصير عالٍ، مناسب للتجزئة والتصنيع.',
+        'prod.oranges.s':'من الشتاء إلى الربيع',
+        'prod.lemons.d':'ليمون صلب وعطري بقشرة سميكة متينة، يتحمل النقل والتخزين جيدًا.',
+        'prod.lemons.s':'معظم أيام السنة',
+        'prod.mango.d':'مانجو عطري، غني وحلو، مصنّف ومعبأ للتجزئة وقطاع الخدمات الغذائية.',
+        'prod.mango.s':'موسم الصيف',
+        'prod.pomegranate.d':'ثمار ثقيلة بحبات ياقوتية داكنة، حلوة ومليئة بالعصير، معبأة للتصدير.',
+        'prod.pomegranate.s':'موسم الخريف',
+        'prod.strawberries.d':'فراولة زاهية وحلوة، تُورَّد طازجة في موسمها ومجمدة IQF على مدار العام.',
+        'prod.strawberries.s':'من الشتاء إلى الربيع',
+        'prod.grapes.d':'عنب مائدة حلو بعناقيد كاملة، مبرد ومعبأ للتصدير.',
+        'prod.grapes.s':'موسم الصيف',
+        'prod.sweetpotatoes.d':'بطاطا حلوة برتقالية داكنة بأحجام موحدة، مخصصة لقطاع التجزئة والخدمات الغذائية.',
+        'prod.potatoes.d':'درجات للمائدة والتصنيع، مغسولة ومصنّفة ومعبأة حسب مواصفاتك.',
+        'prod.onions.d':'بصل أحمر وذهبي بالجملة وفي عبوات شبكية.',
+        'prod.garlic.d':'رؤوس ثوم صلبة وعطرية، نظيفة ومعبأة للتصدير.',
+        'produce.tag':'منتجاتنا',
+        'produce.title':'ما نقوم بتوريده.',
+        'produce.sub':'مجموعة عملية من أكثر الخطوط التي نتعامل بها، مقسمة بين التصدير والاستيراد. يتم ضبط التعبئة والأحجام والدرجات وفقًا لسوقك ومواصفات المتاجر. اسألنا عن الكميات والتوفر الحالي، وإذا احتجت إلى منتج غير مذكور، يمكننا توفيره لك.',
+        'produce.count2':'خطان','produce.count10':'10 خطوط',
+        'apples.tag':'التفاح، تحت المجهر',
+        'apples.title':'أصناف تفاح تناسب كل موسم.',
+        'apples.intro':'يشمل برنامج التفاح لدينا عدة أصناف حتى نحافظ على اللون القوي والحلاوة ومدة الصلاحية طوال الموسم وخلال فترة التخزين.',
+        'apples.v1n':'رويال جالا','apples.v1d':'متوفر من سبتمبر ويُخزَّن للتصدير طوال العام حتى المحصول التالي.',
+        'apples.v2n':'جالا','apples.v2d':'لون داكن بدون خطوط. في موسمه من سبتمبر إلى يناير.',
+        'apples.v3n':'إيدارد','apples.v3d':'تفاح صلب وقوي بمدة صلاحية طويلة. من أواخر أكتوبر.',
+        'apples.v4n':'جونا برنس','apples.v4d':'لون كامل ونسبة سكر عالية. يتوفر من نوفمبر كل عام.',
+        'apples.v5n':'ريدكاب وجلوستر','apples.v5d':'تفاح مائدة زاهي وأحمر داكن بلب صلب ومقرمش.',
+        'why.tag':'لماذا TradeLand',
+        'why.title':'مبنية للمشترين الذين يحتاجون إلى وصول سليم.',
+        'why.sub':'الحصول على المنتجات وعد سهل وتحقيقه صعب. نحن نبقيه بسيطًا: مزارعون جيدون، ومناولة دقيقة، وتواصل مباشر من الطلب إلى الوصول. وإذا احتجت إلى أكثر مما هو مذكور، نبني برنامج التجارة والخدمات اللوجستية حولك.',
+        'why.c1t':'شبكة مزارعين موثوقة','why.c1d':'علاقات مباشرة وطويلة الأمد مع المزارعين في المصدر، حتى نعرف كيف تُزرع الفاكهة وتُعالج.',
+        'why.c2t':'سلسلة تبريد متكاملة','why.c2d':'يتم التحكم في درجة الحرارة من مركز التعبئة حتى الوصول، حتى تظل الجودة ومدة الصلاحية ثابتتين طوال الرحلة.',
+        'why.c3t':'تعبئة بمستوى التصدير','why.c3d':'ضبط الأحجام والتصنيف وبطاقات المنتج وفقًا لسوقك ومواصفات المتاجر، من طبليات مفردة إلى شحنات كاملة.',
+        'why.c4t':'برامج على مدار العام','why.c4d':'يتم التخطيط لمواسم مختلف مصادرنا معًا للحفاظ على استقرار توريدك طوال الأشهر.',
+        'why.c5t':'توريد عالمي حسب الطلب','why.c5d':'هل تحتاج إلى منتج غير مذكور هنا؟ نوفر من الأسواق العالمية ونبني خط الإمداد وفقًا لمتطلباتك.',
+        'why.c6t':'النقل والخدمات اللوجستية','why.c6d':'شحن دولي ولوجستيات سلسلة التبريد بحرًا وجوًا وبرًا، مع إدارة كاملة للمستندات من المصدر إلى الوجهة.',
+        'proc.tag':'كيف نعمل',
+        'proc.title':'من الحقل إلى بابك في أربع خطوات.',
+        'proc.s1t':'التوريد','proc.s1d':'نختار الفواكه والخضروات من مزارعين موثوقين في المصدر، وفقًا لاحتياجاتك من الجودة والكميات.',
+        'proc.s2t':'التصنيف والتعبئة','proc.s2d':'يتم تصنيف المنتجات وضبط أحجامها وتعبئتها وفقًا لمواصفاتك، مع بطاقات جاهزة لسوقك.',
+        'proc.s3t':'لوجستيات سلسلة التبريد','proc.s3d':'يتم التبريد والشحن بحرًا أو جوًا مع الحفاظ على سلسلة التبريد طوال الرحلة.',
+        'proc.s4t':'التسليم','proc.s4d':'نتعامل مع مستندات التصدير وتصل المنتجات إلى مينائك أو بابك، جاهزة للتحرك.',
+        'cta.title':'دعنا نقدم عرض سعر لطلبك التالي.',
+        'cta.sub':'أخبرنا بالمنتج والكمية والسوق. سنعود إليك بالتوفر وخيارات التعبئة والأسعار.',
+        'cta.b1':'اطلب عرض سعر','cta.b2':'راسلنا على واتساب',
+        'contact.tag':'تواصل معنا','contact.title':'ابدأ محادثة.',
+        'contact.sub':'أرسل استفسارك وسنرد عليك بما تحتاجه لاتخاذ قرارك.',
+        'contact.company':'Trade Land Sp. z o.o.',
+        'contact.motto':'من الطبيعة إليك. توريد عالمي وعلاقات موثوقة.',
+        'contact.email':'البريد الإلكتروني','contact.phone':'الهاتف / واتساب','contact.programs':'البرامج','contact.programsv':'التصدير والاستيراد',
+        'form.name':'الاسم','form.name.ph':'اسمك',
+        'form.company':'الشركة','form.company.ph':'اسم الشركة',
+        'form.email':'البريد الإلكتروني','form.email.ph':'you@company.com',
+        'form.market':'السوق المستهدف','form.market.ph':'الدولة أو الميناء',
+        'form.products':'المنتجات التي تهمك','form.products.opt':'(اختر كل ما ينطبق)',
+        'form.other':'أخرى',
+        'form.message':'الرسالة','form.message.ph':'الكميات، التعبئة، التوقيت، وأي شيء آخر يجب أن نعرفه.',
+        'form.send':'أرسل الاستفسار',
+        'form.note':'نرد على الاستفسارات الجادة خلال يوم عمل واحد.',
+        'form.err':'حدث خطأ ما. من فضلك حاول مرة أخرى أو راسلنا مباشرة على',
+        'form.ok.t':'شكرًا لك، تم إرسال استفسارك.',
+        'form.ok.d':'استلمنا بياناتك وسنعود إليك قريبًا.',
+        'foot.about':'فواكه وخضروات مميزة يتم توريدها من خلال برامج التصدير والاستيراد، مصنفة ومعبأة ومشحونة إلى جميع أنحاء العالم.',
+        'foot.motto':'من الطبيعة إليك.',
+        'foot.explore':'استكشف','foot.apples':'أصناف التفاح',
+        'foot.rights':'جميع الحقوق محفوظة.','foot.tagline':'توريد عالمي وعلاقات موثوقة.',
+        'form.subject':'استفسار منتجات جديد من ','form.fromname':'موقع TradeLand'
+      }
+    }
+  };
+
+  var SUPPORTED = ['en','pl','ar'];
+
+  function detectLang(){
+    try {
+      var saved = localStorage.getItem('tradeland-lang');
+      if (saved && SUPPORTED.indexOf(saved) !== -1) return saved;
+    } catch(e){}
+    var nav = (navigator.language || 'en').toLowerCase();
+    if (nav.indexOf('pl') === 0) return 'pl';
+    if (nav.indexOf('ar') === 0) return 'ar';
+    return 'en';
+  }
+
+  function applyLang(lang){
+    if (SUPPORTED.indexOf(lang) === -1) lang = 'en';
+    var pack = I18N[lang];
+    var html = document.documentElement;
+    html.setAttribute('lang', pack.html.lang);
+    html.setAttribute('dir', pack.html.dir);
+
+    // meta
+    document.title = pack.meta.title;
+    var md = document.querySelector('meta[name="description"]');
+    if (md) md.setAttribute('content', pack.meta.desc);
+
+    // text nodes
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      var val = pack.strings[key];
+      if (typeof val === 'string') el.textContent = val;
+    });
+
+    // placeholders
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-ph');
+      var val = pack.strings[key];
+      if (typeof val === 'string') el.setAttribute('placeholder', val);
+    });
+
+    // language buttons
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+    });
+
+    try { localStorage.setItem('tradeland-lang', lang); } catch(e){}
+    window.__lang = lang;
+  }
+
+  // wire up buttons
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      applyLang(b.getAttribute('data-lang'));
+    });
+  });
+
+  // init
+  applyLang(detectLang());
+
   // Enquiry form: submits to Web3Forms, which emails the address tied to your access key.
   // SETUP (one time): create a free key at https://web3forms.com using info@tradeland-pl.com
   // as the destination, then paste it into WEB3FORMS_KEY below. No per-submission activation.
@@ -833,13 +1211,18 @@
     e.preventDefault();
     var btn = form.querySelector('button[type="submit"]');
     var label = btn.textContent;
-    btn.disabled = true; btn.textContent = 'Sending...';
+    btn.disabled = true;
+    var lang = window.__lang || 'en';
+    var sending = { en:'Sending...', pl:'Wysyłanie...', ar:'جارٍ الإرسال...' }[lang];
+    btn.textContent = sending;
     formErr.style.display = 'none';
     var d = new FormData(form);
+    var strings = I18N[lang].strings;
     var payload = {
       access_key: WEB3FORMS_KEY,
-      subject: 'New produce enquiry from ' + (d.get('name') || 'the website'),
-      from_name: 'TradeLand website',
+      subject: strings['form.subject'] + (d.get('name') || 'the website'),
+      from_name: strings['form.fromname'],
+      language: lang,
       name: d.get('name') || '',
       company: d.get('company') || '',
       email: d.get('email') || '',
